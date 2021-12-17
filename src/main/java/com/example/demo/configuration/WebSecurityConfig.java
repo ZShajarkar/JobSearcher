@@ -50,15 +50,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //ToDo replace /list_users with resumeBuilder and sendRequest for job
 
-
-        http
-                .authorizeRequests()
-                .antMatchers( "/public/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/public/login")
-                .failureUrl("/")
-                .permitAll();
+        http .csrf().disable() .authorizeRequests() .anyRequest().permitAll();
+       // http
+               // .authorizeRequests()
+               // .antMatchers( "/public/**").permitAll();
+                //.anyRequest().authenticated()
+                //.and()
+                //.formLogin()
+                //.loginPage("/public/login")
+                //.failureUrl("/")
+              //  .permitAll();
     }
 }

@@ -5,6 +5,7 @@ import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class UserController {
@@ -16,8 +17,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/public/process_register")
-    public String processRegisteration(UserDto userDto) {
+    @PostMapping(path = "/public/process_register", consumes = "application/json", produces = "application/json")
+    public String processRegisteration(@RequestBody UserDto userDto) {
         userService.save(userDto);
         return "register_sucess";
     }
