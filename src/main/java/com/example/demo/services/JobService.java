@@ -7,6 +7,8 @@ import com.example.demo.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JobService {
     private final JobRepository jobRepository;
@@ -20,6 +22,11 @@ public class JobService {
 
     public JobDto save(JobDto jobDto) {
         Job savedJob = this.jobRepository.save(this.jobMapper.toModel(jobDto));
-         return this.jobMapper.toDto(savedJob);
+        return this.jobMapper.toDto(savedJob);
+    }
+
+    public List<JobDto> findByJobTitle(String jobTitle) {
+        List<Job> jobsByJobTitle = this.jobRepository.findByJobTitle(jobTitle);
+        return this.jobMapper.toDto(jobsByJobTitle);
     }
 }

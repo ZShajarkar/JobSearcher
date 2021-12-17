@@ -2,14 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.JobDto;
 import com.example.demo.services.JobService;
-import org.apache.catalina.connector.Response;
-import org.apache.catalina.connector.ResponseFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/public/job/v1")
@@ -24,8 +20,13 @@ public class JobController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public JobDto save(@RequestBody JobDto jobDto) {
-       return this.jobService.save(jobDto);
-       // return  new Response(Math.toIntExact(savedDto.getId()));
+        return this.jobService.save(jobDto);
+        // return  new Response(Math.toIntExact(savedDto.getId()));
+    }
 
+    @GetMapping(produces = "application/json")
+    public List<JobDto> findByJobTitle(@RequestParam(value = "jobTitle", required = false) String jobTitle) {
+        return this.jobService.findByJobTitle(jobTitle);
+        // return  new Response(Math.toIntExact(savedDto.getId()));
     }
 }

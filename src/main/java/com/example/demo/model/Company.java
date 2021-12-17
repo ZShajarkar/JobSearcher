@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Company")
@@ -16,4 +17,5 @@ public class Company {
     private String aboutCompany;
     @Column(nullable = false, length = 80)
     private String address;
+
 }
