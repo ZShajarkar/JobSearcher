@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class BaseService {
-    public String encode(String simpleText){
-        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-        String encodedText=encoder.encode(simpleText);
-        return encodedText;
+    public String encode(String simpleText) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.encode(simpleText);
     }
 }

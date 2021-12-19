@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +16,6 @@ public class CustomeUserDeatilService implements UserDetailsService {
         if(user==null)
             throw new UsernameNotFoundException("User not Found by this email");
 
-    return new CustomeUserDeatails(user);
+    return new CustomUserDetails(user);
     }
 }

@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/public/process_register", consumes = "application/json", produces = "application/json")
-    public String processRegisteration(@RequestBody UserDto userDto) {
+    public String processRegistration(@RequestBody UserDto userDto) {
         userService.save(userDto);
         return "register_sucess";
     }
