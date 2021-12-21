@@ -1,0 +1,39 @@
+POST http://localhost:8084/public/job/v1
+Content-Type: application/json
+
+{
+  "jobTitle": "rrdf",
+  "jobGroup": "ffff",
+  "salary": "2333",
+  "jobDescription": "fgh",
+  "skill": "hhhhhhhhhh",
+  "company": {
+    "id": 10
+  }
+}
+###
+POST http://localhost:8084/public/process_register
+Content-Type: application/json
+
+{
+"email": "sara@gmail.com",
+"password": "sara",
+"firstName": "sara",
+"lastName": "Pit",
+"confirmedPassword": "sara"
+}
+###
+GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
+
+
+### ثبت شرکت
+
+POST http://localhost:8084/public/company/v1
+Content-Type: application/json
+
+{
+  "companyName": "dsvvs",
+  "city": "ffff",
+  "aboutCompany": "یه شرکت بزرگه",
+  "address": "ایران"
+}

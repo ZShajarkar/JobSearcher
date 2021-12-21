@@ -2,10 +2,18 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.JobDto;
 import com.example.demo.model.Job;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JobMapper implements DtoToModelMapper<JobDto, Job> {
+    private final CompanyMapper companyMapper;
+
+    @Autowired
+    public JobMapper(CompanyMapper companyMapper) {
+        this.companyMapper = companyMapper;
+    }
+
     @Override
     public Job toModel(JobDto dto) {
         if (dto == null) {
@@ -18,6 +26,7 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         job.setJobTitle(dto.getJobTitle());
         job.setSalary(dto.getSalary());
         job.setSkill(dto.getSkill());
+        job.setCompany(this.companyMapper.toModel(dto.getCompany()));
         return job;
     }
 
@@ -33,6 +42,7 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         jobDto.setJobTitle(jobModel.getJobTitle());
         jobDto.setSalary(jobModel.getSalary());
         jobDto.setSkill(jobModel.getSkill());
+        jobDto.setCompany(this.companyMapper.toDto(jobModel.getCompany()));
         return jobDto;
     }
 }

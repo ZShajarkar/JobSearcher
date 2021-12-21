@@ -1,8 +1,12 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+@Getter @Setter
 @Entity
 @Table(name = "Company")
 public class Company {
@@ -17,5 +21,8 @@ public class Company {
     private String aboutCompany;
     @Column(nullable = false, length = 80)
     private String address;
+
+    @OneToMany(mappedBy="company",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    private Set<Job> jobs =new HashSet<>();
 
 }

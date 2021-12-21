@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -19,6 +21,11 @@ public class Job {
     private String jobDescription;
     @Column(nullable = true, length = 100)
     private String skill;
+
+    @JsonIgnore
+    @ManyToOne(optional = false, fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(nullable = false)
+    private Company company;
 
     public Long getId() {
         return id;
@@ -68,4 +75,11 @@ public class Job {
         this.skill = skill;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 }

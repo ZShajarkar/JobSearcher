@@ -12,4 +12,5 @@ public class JobDto {
     private String salary;
     private String jobDescription;
     private String skill;
+    private CompanyDto company;
 }
