@@ -11,7 +11,7 @@ Content-Type: application/json
     "id": 10
   }
 }
-###
+### ثبت نام آگهی
 POST http://localhost:8084/public/process_register
 Content-Type: application/json
 
@@ -22,18 +22,34 @@ Content-Type: application/json
 "lastName": "Pit",
 "confirmedPassword": "sara"
 }
-###
+### ثبت نام کاربر
 GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
 
 
-### ثبت شرکت
+### جستجو شغل
 
 POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "dsvvs",
+  "companyName": "اه",
   "city": "ffff",
   "aboutCompany": "یه شرکت بزرگه",
   "address": "ایران"
 }
+
+### ثبت شرکت
+
+POST http://localhost:8084/upload
+Content-Type: multipart/form-data; boundary=RequestBody
+
+--RequestBody
+Content-Disposition: form-data; name="file"; filename="ZeinabShajarkar.pdf"<"H:\resume"
+
+--RequestBody--
+
+### آپلود رزومه
+
+
+
+
