@@ -12,6 +12,7 @@ public class UserMapper implements DtoToModelMapper<UserDto, User> {
             return null;
         }
         User user=new User();
+        user.setId(dto.getId());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
         user.setEmail(dto.getEmail());

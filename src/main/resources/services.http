@@ -8,7 +8,7 @@ Content-Type: application/json
   "jobDescription": "fgh",
   "skill": "hhhhhhhhhh",
   "company": {
-    "id": 10
+    "id": 1
   }
 }
 ### ثبت نام آگهی
@@ -40,13 +40,19 @@ Content-Type: application/json
 
 ### ثبت شرکت
 
-POST http://localhost:8084/upload
-Content-Type: multipart/form-data; boundary=RequestBody
+# curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
+#--form 'file=@"/H:/why.png"'
+POST http://localhost:8084/upload/job/1/user/1
+Content-Type: multipart/form-data; boundary=requestBody
 
---RequestBody
-Content-Disposition: form-data; name="file"; filename="ZeinabShajarkar.pdf"<"H:\resume"
+--requestBody
+Content-Disposition: form-data; name="file"; filename="why.png""< "\H:\why.png"
 
---RequestBody--
+--requestBody--
+
+###
+
+
 
 ### آپلود رزومه
 

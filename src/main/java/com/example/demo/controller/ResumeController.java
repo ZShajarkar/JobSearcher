@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.CompanyUserRelation;
+import com.example.demo.model.Resume;
 import com.example.demo.response.ResponseDb;
 import com.example.demo.response.ResponseMessage;
-import com.example.demo.services.CompanyUserRelationService;
+import com.example.demo.services.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,16 +20,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class FileController {
+public class ResumeController {
 
     @Autowired
-    private CompanyUserRelationService storageService;
+    private ResumeService storageService;
 
-    @PostMapping("/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/upload/job/{jobId}/user/{userId}")
+    public ResponseEntity<ResponseMessage> uploadFile(
+            @PathVariable String jobId,
+            @PathVariable String userId,
+            @RequestParam("file") MultipartFile file) {
         String message = "";
         try {
-            storageService.store(file);
+            storageService.store(jobId, userId, file);
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
@@ -61,7 +63,7 @@ public class FileController {
 
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
-        CompanyUserRelation fileDB = storageService.getFile(id);
+        Resume fileDB = storageService.getFile(id);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")

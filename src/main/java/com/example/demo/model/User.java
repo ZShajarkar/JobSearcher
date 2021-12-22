@@ -3,6 +3,8 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -18,6 +20,8 @@ public class User implements Serializable {
     private String firstName;
     @Column(nullable = false, length = 20)
     private String lastName;
+    @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    private Set<Resume> resumes =new HashSet<>();
 
     public Long getId() {
         return id;
