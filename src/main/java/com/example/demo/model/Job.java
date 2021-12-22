@@ -3,6 +3,8 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -21,6 +23,8 @@ public class Job {
     private String jobDescription;
     @Column(nullable = true, length = 100)
     private String skill;
+    @OneToMany(mappedBy="job",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    private Set<Resume> resumes =new HashSet<>();
 
     @JsonIgnore
     @ManyToOne(optional = false, fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
