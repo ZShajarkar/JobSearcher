@@ -1,6 +1,6 @@
 package com.example.demo.configuration;
 
-import com.example.demo.services.CustomeUserDeatilService;
+import com.example.demo.services.CustomUserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new CustomeUserDeatilService();
+        return new CustomUserDetailServiceImpl();
     }
 
     @Bean

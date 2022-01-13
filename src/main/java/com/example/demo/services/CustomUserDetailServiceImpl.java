@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class CustomeUserDeatilService implements UserDetailsService {
+public class CustomUserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
     @Override
@@ -16,6 +16,6 @@ public class CustomeUserDeatilService implements UserDetailsService {
         if(user==null)
             throw new UsernameNotFoundException("User not Found by this email");
 
-    return new CustomUserDetails(user);
+    return new CustomUserDetailsImpl(user);
     }
 }

@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/public/process_register", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<ResponseMessage> processRegistration(@RequestBody UserDto userDto){
+    public ResponseEntity<ResponseMessage> processRegistration(@RequestBody UserDto userDto) {
         try {
             userService.save(userDto);
 

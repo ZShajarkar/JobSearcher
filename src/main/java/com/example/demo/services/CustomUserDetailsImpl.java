@@ -8,11 +8,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetailsImpl implements UserDetails {
     private final User user;
 
     @Autowired
-    public CustomUserDetails(User user) {
+    public CustomUserDetailsImpl(User user) {
         this.user = user;
     }
 

@@ -24,8 +24,8 @@ public class JobController {
     }
 
     @GetMapping(produces = "application/json")
-    public List<JobDto> findByJobTitleAndCity(@RequestParam(value = "jobTitle", required = false) String jobTitle,@RequestParam(value = "city", required = false) String city) {
-        return this.jobService.findByJobTitleAndCity(jobTitle,city);
+    public List<JobDto> findByJobTitleAndCity(@RequestParam(value = "jobTitle", required = false) String jobTitle, @RequestParam(value = "city", required = false) String city) {
+        return this.jobService.findByJobTitleAndCity(jobTitle, city);
         // return  new Response(Math.toIntExact(savedDto.getId()));
     }
 }

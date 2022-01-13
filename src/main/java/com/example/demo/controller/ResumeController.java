@@ -74,6 +74,7 @@ public class ResumeController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
                 .body(fileDB.getData());
     }
+
     @GetMapping("/job/{job-id}")
     public ResponseEntity<?> getResumesByJobId(@PathVariable("job-id") Long jobId) throws NotFoundException {
         return ResponseEntity.ok().body(storageService.getResumesByJobId(jobId));
