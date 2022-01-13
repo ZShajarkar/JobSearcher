@@ -19,6 +19,7 @@ public class Resume {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
+    @Column(columnDefinition = "nvarchar")
     private String name;
 
     private String type;
@@ -27,12 +28,12 @@ public class Resume {
     private byte[] data;
 
     @JsonIgnore
-    @ManyToOne(optional = false, fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(nullable = false)
     private Job job;
 
     @JsonIgnore
-    @ManyToOne(optional = false, fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(nullable = false)
     private User user;
 

@@ -12,16 +12,16 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, columnDefinition = "nvarchar", unique = true, length = 45)
     private String email;
-    @Column(nullable = false, length = 64)
+    @Column(nullable = false, columnDefinition = "nvarchar", length = 64)
     private String password;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, columnDefinition = "nvarchar", length = 20)
     private String firstName;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, columnDefinition = "nvarchar", length = 20)
     private String lastName;
-    @OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-    private Set<Resume> resumes =new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Resume> resumes = new HashSet<>();
 
     public Long getId() {
         return id;
