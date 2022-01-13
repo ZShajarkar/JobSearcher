@@ -24,9 +24,8 @@ public class JobService {
         Job savedJob = this.jobRepository.save(this.jobMapper.toModel(jobDto));
         return this.jobMapper.toDto(savedJob);
     }
-
-    public List<JobDto> findByJobTitle(String jobTitle) {
-        List<Job> jobsByJobTitle = this.jobRepository.findByJobTitle(jobTitle);
+    public List<JobDto> findByJobTitleAndCity(String jobTitle,String city) {
+        List<Job> jobsByJobTitle = this.jobRepository.findByJobTitleAndCity(jobTitle,city);
         return this.jobMapper.toDto(jobsByJobTitle);
     }
 }

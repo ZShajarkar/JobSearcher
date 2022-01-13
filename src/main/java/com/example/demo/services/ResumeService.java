@@ -6,12 +6,14 @@ import com.example.demo.dto.UserDto;
 import com.example.demo.mapper.ResumeMapper;
 import com.example.demo.model.Resume;
 import com.example.demo.repository.ResumeRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Service
@@ -44,5 +46,12 @@ public class ResumeService {
 
     public Stream<Resume> getAllFiles() {
         return resumeRepository.findAll().stream();
+    }
+
+    public List<ResumeDto> getResumesByJobId(Long jobId) throws NotFoundException {
+        List<ResumeDto> resumeDtos = this.resumeMapper.toDto(resumeRepository.findByJob(jobId));
+        if (resumeDtos.isEmpty())
+            throw new NotFoundException("رزومه ای برای این آگهی  ارسال نشده است");
+        return resumeDtos;
     }
 }

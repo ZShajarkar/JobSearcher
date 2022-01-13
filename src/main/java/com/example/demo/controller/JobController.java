@@ -21,12 +21,11 @@ public class JobController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     public JobDto save(@RequestBody JobDto jobDto) {
         return this.jobService.save(jobDto);
-        // return  new Response(Math.toIntExact(savedDto.getId()));
     }
 
     @GetMapping(produces = "application/json")
-    public List<JobDto> findByJobTitle(@RequestParam(value = "jobTitle", required = false) String jobTitle) {
-        return this.jobService.findByJobTitle(jobTitle);
+    public List<JobDto> findByJobTitleAndCity(@RequestParam(value = "jobTitle", required = false) String jobTitle,@RequestParam(value = "city", required = false) String city) {
+        return this.jobService.findByJobTitleAndCity(jobTitle,city);
         // return  new Response(Math.toIntExact(savedDto.getId()));
     }
 }

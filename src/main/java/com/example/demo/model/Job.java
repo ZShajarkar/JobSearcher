@@ -13,7 +13,7 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true, unique = true, length = 100)
+    @Column(nullable = true, length = 100)
     private String JobTitle;
     @Column(nullable = true, length = 100)
     private String JobGroup;
@@ -23,11 +23,11 @@ public class Job {
     private String jobDescription;
     @Column(nullable = true, length = 100)
     private String skill;
-    @OneToMany(mappedBy="job",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-    private Set<Resume> resumes =new HashSet<>();
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Resume> resumes = new HashSet<>();
 
     @JsonIgnore
-    @ManyToOne(optional = false, fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(nullable = false)
     private Company company;
 

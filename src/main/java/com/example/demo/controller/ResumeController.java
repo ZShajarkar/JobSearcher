@@ -4,6 +4,7 @@ import com.example.demo.model.Resume;
 import com.example.demo.response.ResponseDb;
 import com.example.demo.response.ResponseMessage;
 import com.example.demo.services.ResumeService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,15 +23,19 @@ import java.util.stream.Collectors;
 @Controller
 public class ResumeController {
 
+    private final ResumeService storageService;
+
     @Autowired
-    private ResumeService storageService;
+    public ResumeController(ResumeService storageService) {
+        this.storageService = storageService;
+    }
 
     @PostMapping("/upload/job/{jobId}/user/{userId}")
     public ResponseEntity<ResponseMessage> uploadFile(
             @PathVariable String jobId,
             @PathVariable String userId,
             @RequestParam("file") MultipartFile file) {
-        String message = "";
+        String message;
         try {
             storageService.store(jobId, userId, file);
 
@@ -69,4 +74,9 @@ public class ResumeController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
                 .body(fileDB.getData());
     }
+    @GetMapping("/job/{job-id}")
+    public ResponseEntity<?> getResumesByJobId(@PathVariable("job-id") Long jobId) throws NotFoundException {
+        return ResponseEntity.ok().body(storageService.getResumesByJobId(jobId));
+    }
+
 }

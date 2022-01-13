@@ -2,7 +2,7 @@ POST http://localhost:8084/public/job/v1
 Content-Type: application/json
 
 {
-  "jobTitle": "rrdf",
+  "jobTitle": "برنامه نویس",
   "jobGroup": "ffff",
   "salary": "2333",
   "jobDescription": "fgh",
@@ -11,19 +11,21 @@ Content-Type: application/json
     "id": 1
   }
 }
+
 ### ثبت نام آگهی
 POST http://localhost:8084/public/process_register
 Content-Type: application/json
 
 {
-"email": "sara@gmail.com",
-"password": "sara",
-"firstName": "sara",
-"lastName": "Pit",
-"confirmedPassword": "sara"
+  "email": "saudd87@gmail.com",
+  "password": "sSSssd78@5*",
+  "firstName": "saud",
+  "lastName": "saud",
+  "confirmedPassword": "sSSssd78@5*"
 }
+
 ### ثبت نام کاربر
-GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
+GET http://localhost:8084/public/job/v1?city=tehran
 
 
 ### جستجو شغل
@@ -32,8 +34,8 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "اه",
-  "city": "ffff",
+  "companyName": "wow",
+  "city": "tehran",
   "aboutCompany": "یه شرکت بزرگه",
   "address": "ایران"
 }
@@ -42,7 +44,7 @@ Content-Type: application/json
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/upload/job/1/user/1
+POST http://localhost:8084/upload/job/2/user/1
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
@@ -50,11 +52,9 @@ Content-Disposition: form-data; name="file"; filename="why.png""< "\H:\why.png"
 
 --requestBody--
 
-###
-
-
-
 ### آپلود رزومه
+
+GET http://localhost:8084/files
 
 
 
