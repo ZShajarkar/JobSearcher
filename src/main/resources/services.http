@@ -25,7 +25,7 @@ Content-Type: application/json
 }
 
 ### ثبت نام کاربر
-GET http://localhost:8084/public/job/v1?city=tehran
+GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
 
 
 ### جستجو شغل

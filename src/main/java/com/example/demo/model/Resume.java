@@ -19,7 +19,6 @@ public class Resume {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(columnDefinition = "nvarchar")
     private String name;
 
     private String type;
