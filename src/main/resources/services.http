@@ -1,3 +1,21 @@
+GET http://localhost:8084/public/provinces/v1
+
+### گرفتن لیست شهر ها------------------------------------------------------
+
+
+POST http://localhost:8084/public/company/v1
+Content-Type: application/json
+
+{
+  "companyName": "نام شرکت باید یونیک باشد3",
+  "city": "تهران",
+  "aboutCompany": "یه شرکت بزرگه",
+  "address": "ایران"
+}
+
+### ثبت شرکت ------------------------------------------------------------------
+
+
 POST http://localhost:8084/public/job/v1
 Content-Type: application/json
 
@@ -8,11 +26,12 @@ Content-Type: application/json
   "jobDescription": "fgh",
   "skill": "hhhhhhhhhh",
   "company": {
-    "id": 1
+    "id": 9
   }
 }
 
-### ثبت نام آگهی
+### ثبت نام آگهی --------------------------------------------------------------------
+### پیش نیاز ثبت آگهی ثبت شرکت است ---------------------------------------------------
 POST http://localhost:8084/public/process_register
 Content-Type: application/json
 
@@ -24,23 +43,10 @@ Content-Type: application/json
   "confirmedPassword": "sSSssd78@5*"
 }
 
-### ثبت نام کاربر
-GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
+### ثبت نام کاربر ----------------------------------------------------------------------
+GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=تهران
 
-
-### جستجو شغل
-
-POST http://localhost:8084/public/company/v1
-Content-Type: application/json
-
-{
-  "companyName": "wow",
-  "city": "tehran",
-  "aboutCompany": "یه شرکت بزرگه",
-  "address": "ایران"
-}
-
-### ثبت شرکت
+### جستجو شغل ----------------------------------------------------------------------
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
