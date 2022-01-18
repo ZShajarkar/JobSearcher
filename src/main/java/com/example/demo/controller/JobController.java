@@ -6,7 +6,6 @@ import com.example.demo.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 @CrossOrigin
 @RestController
@@ -25,7 +24,7 @@ public class JobController {
         try {
             return ResponseFactory.ok(this.jobService.save(jobDto));
         } catch (Exception exception) {
-            return ResponseFactory.handel((HttpClientErrorException) exception);
+            return ResponseFactory.badRequest(exception.getMessage());
         }
     }
 
@@ -34,7 +33,7 @@ public class JobController {
         try {
             return ResponseFactory.ok(this.jobService.findByJobTitleAndCity(jobTitle, city));
         } catch (Exception exception) {
-            return ResponseFactory.handel((HttpClientErrorException) exception);
+            return ResponseFactory.badRequest(exception.getMessage());
         }
     }
 }

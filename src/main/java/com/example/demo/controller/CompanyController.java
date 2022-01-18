@@ -6,7 +6,6 @@ import com.example.demo.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 @CrossOrigin
 @RestController
@@ -24,7 +23,7 @@ public class CompanyController {
         try {
             return ResponseFactory.ok(this.companyService.save(companyDto), "شرکت با موفقیت ثبت شد");
         } catch (Exception e) {
-            return ResponseFactory.handel((HttpClientErrorException) e);
+            return ResponseFactory.badRequest(e.getMessage());
         }
     }
 }
