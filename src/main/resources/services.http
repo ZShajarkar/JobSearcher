@@ -7,10 +7,10 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "نام شرکت باید یونیک باشد3",
+  "companyName": "وووووو",
   "city": "تهران",
-  "aboutCompany": "یه شرکت بزرگه",
-  "address": "ایران"
+  "aboutCompany": "         یی",
+  "address": "    زز  "
 }
 
 ### ثبت شرکت ------------------------------------------------------------------
@@ -36,10 +36,10 @@ POST http://localhost:8084/public/process_register
 Content-Type: application/json
 
 {
-  "email": "saudd87@gmail.com",
+  "email": "zeinaba@gmail.com",
   "password": "sSSssd78@5*",
-  "firstName": "saud",
-  "lastName": "saud",
+  "firstName": "زینب",
+  "lastName": "شجرکار       ",
   "confirmedPassword": "sSSssd78@5*"
 }
 

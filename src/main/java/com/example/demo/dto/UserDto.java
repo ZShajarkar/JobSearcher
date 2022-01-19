@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Job;
 import lombok.Getter;
 import lombok.Setter;
 

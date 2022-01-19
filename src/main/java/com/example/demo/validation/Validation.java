@@ -5,6 +5,7 @@ import com.example.demo.util.Constants;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.ValidationException;
 import java.util.InputMismatchException;
 import java.util.regex.Pattern;
 
@@ -16,9 +17,9 @@ public final class Validation {
             throw new InputMismatchException(message);
     }
 
-    public static void notEmpty(String inout, String message) throws Exception {
+    public static void notEmpty(String inout, String message) throws ValidationException {
         if (inout.trim().isEmpty())
-            throw new Exception(message);
+            throw new ValidationException(message);
     }
 
     public static void checkComplicatePassword(String text) throws Exception {
@@ -31,6 +32,18 @@ public final class Validation {
                 .matcher(email)
                 .matches())
             throw new Exception(ExceptionMessage.EMAIL_IS_NOT_VALID);
+    }
+
+    public static void validateIfPersian(String input, String message) throws ValidationException {
+        if (!Pattern.compile(Constants.JUST_PERSIAN_PATTERN)
+                .matcher(input.trim())
+                .matches())
+            throw new ValidationException(message);
+    }
+
+    public static void checkValidLength(int min, int max, String message, String input) throws Exception {
+        if (input.trim().length() < min || input.length() > max)
+            throw new Exception(message);
     }
 
 }

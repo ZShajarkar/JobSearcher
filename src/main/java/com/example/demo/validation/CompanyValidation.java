@@ -18,7 +18,13 @@ public class CompanyValidation {
     }
 
     public void validate(CompanyDto companyDto) throws ValidationException {
+        Validation.notEmpty(companyDto.getCompanyName(), ExceptionMessage.COMPANY_NAME_IS_REQUIRED);
+        Validation.notEmpty(companyDto.getAboutCompany(), ExceptionMessage.ABOUT_COMPANY_IS_REQUIRED);
+        Validation.notEmpty(companyDto.getAddress(), ExceptionMessage.COMPANY_ADDRESS_IS_REQUIRED);
+
         validateUniqueCompanyAndCity(companyDto.getCompanyName(), companyDto.getCity());
+
+        Validation.validateIfPersian(companyDto.getCompanyName(), ExceptionMessage.COMPANY_NAME_MUST_BE_LETTER);
     }
 
     private void validateUniqueCompanyAndCity(String company, String city) throws ValidationException {

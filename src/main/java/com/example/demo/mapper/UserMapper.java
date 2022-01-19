@@ -1,7 +1,7 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.User;
 import com.example.demo.dto.UserDto;
+import com.example.demo.model.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +11,7 @@ public class UserMapper implements DtoToModelMapper<UserDto, User> {
         if (dto == null) {
             return null;
         }
-        User user=new User();
+        User user = new User();
         user.setId(dto.getId());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
@@ -25,11 +25,12 @@ public class UserMapper implements DtoToModelMapper<UserDto, User> {
         if (userModel == null) {
             return null;
         }
-        UserDto userDto=new UserDto();
+        UserDto userDto = new UserDto();
         userDto.setFirstName(userModel.getFirstName());
         userDto.setLastName(userModel.getLastName());
         userDto.setEmail(userModel.getEmail());
         userDto.setPassword(userModel.getPassword());
+        userDto.setId(userModel.getId());
         return userDto;
     }
 }

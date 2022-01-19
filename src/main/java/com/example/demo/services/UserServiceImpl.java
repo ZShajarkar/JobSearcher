@@ -7,6 +7,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.validation.UserValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 public class UserServiceImpl implements UserService {
