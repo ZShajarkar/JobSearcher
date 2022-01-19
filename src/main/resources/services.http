@@ -7,10 +7,10 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "وووووو",
+  "companyName": "شرکت طاها",
   "city": "تهران",
-  "aboutCompany": "         یی",
-  "address": "    زز  "
+  "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
+  "address": " خیابان انقلاب،پلاک 200"
 }
 
 ### ثبت شرکت ------------------------------------------------------------------
@@ -21,10 +21,10 @@ Content-Type: application/json
 
 {
   "jobTitle": "برنامه نویس",
-  "jobGroup": "ffff",
+  "jobGroup": "طراحی",
   "salary": "2333",
-  "jobDescription": "fgh",
-  "skill": "hhhhhhhhhh",
+  "jobDescription": "با محیطی مفرح",
+  "skill": "java",
   "company": {
     "id": 9
   }
@@ -61,6 +61,12 @@ Content-Disposition: form-data; name="file"; filename="why.png""< "\H:\why.png"
 ### آپلود رزومه
 
 GET http://localhost:8084/files
+
+### دانلود رزومه ها
+
+GET http://localhost:8084/public/job-groups/v1
+
+### گرفتن لیست گروه های شغلی
 
 
 

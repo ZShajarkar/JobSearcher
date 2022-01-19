@@ -5,7 +5,7 @@ import com.example.demo.dto.JobDto;
 import java.util.List;
 
 public interface JobService {
-    JobDto save(JobDto jobDto);
+    JobDto save(JobDto jobDto) throws Exception;
 
     List<JobDto> findByJobTitleAndCity(String jobTitle, String city);
 }

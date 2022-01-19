@@ -22,16 +22,21 @@ public final class Validation {
             throw new ValidationException(message);
     }
 
-    public static void checkComplicatePassword(String text) throws Exception {
+    public static void checkComplicatePassword(String text) throws ValidationException {
         if (!text.matches(Constants.STRONG_PASSWORD_PATTERN))
-            throw new Exception(ExceptionMessage.PASSWORD_IS_NOT_STRONG);
+            throw new ValidationException(ExceptionMessage.PASSWORD_IS_NOT_STRONG);
     }
 
-    public static void validateEmail(String email) throws Exception {
+    public static void validateEmail(String email) throws ValidationException {
         if (!Pattern.compile(Constants.VALID_EMAIL_PATTERN)
                 .matcher(email)
                 .matches())
-            throw new Exception(ExceptionMessage.EMAIL_IS_NOT_VALID);
+            throw new ValidationException(ExceptionMessage.EMAIL_IS_NOT_VALID);
+    }
+
+    public static void notNull(Object input, String message) throws Exception {
+        if (input == null)
+            throw new Exception(message);
     }
 
     public static void validateIfPersian(String input, String message) throws ValidationException {
@@ -41,9 +46,10 @@ public final class Validation {
             throw new ValidationException(message);
     }
 
-    public static void checkValidLength(int min, int max, String message, String input) throws Exception {
+    public static void checkValidLength(int min, int max, String message, String input) throws ValidationException {
         if (input.trim().length() < min || input.length() > max)
-            throw new Exception(message);
+            throw new ValidationException(message);
     }
+
 
 }

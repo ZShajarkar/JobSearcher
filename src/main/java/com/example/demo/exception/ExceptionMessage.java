@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExceptionMessage {
+
+    //General message
+    public static final String INPUT_NOT_CORRECT = "ورودی درست نیست";
     //userMessage
     public static final String PASSWORD_DOESNT_MATCH = "پسورد و تایید پسورد همخوانی ندارند";
     public static final String PASSWORD_IS_NOT_STRONG = "رمز عبور قوی نیست!رمزعبور قویتری انتخاب کنید";
@@ -25,4 +28,12 @@ public final class ExceptionMessage {
     public static final String COMPANY_NAME_IS_REQUIRED = " نام  شرکت اجباریست";
     public static final String COMPANY_ADDRESS_IS_REQUIRED = " آدرس  شرکت اجباریست";
     public static final String ABOUT_COMPANY_IS_REQUIRED = " درباره شرکت اجباریست";
+
+    //JobMessage
+    public static final String JOB_TITLE_MUST_BE_FILLED = "عنوان شغلی باید پر شده باشد";
+    public static final String JOB_SKILLS_MUST_BE_FILLED = "توانایی ها می بایست پر شده باشند";
+    public static final String ABOUT_JOB__MUST_BE_FILLED = "توضیحات درباره شغل می بایست پر شده باشند";
+    public static final String JOB_GROUP_MUST_BE_FILLED = "گروه شغلی می بایست پر شده باشند";
+
+
 }
