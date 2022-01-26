@@ -4,6 +4,7 @@ import com.example.demo.model.Resume;
 import com.example.demo.response.ResponseDb;
 import com.example.demo.response.ResponseMessage;
 import com.example.demo.services.ResumeService;
+import com.example.demo.util.ResponseFactory;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.xml.bind.ValidationException;
 import java.util.List;
 import java.util.stream.Collectors;
+
 @CrossOrigin
 @RestController
 public class ResumeController {
@@ -27,7 +30,7 @@ public class ResumeController {
     }
 
     @PostMapping("/upload/job/{jobId}/user/{userId}")
-    public ResponseEntity<ResponseMessage> uploadFile(
+    public ResponseEntity<?> uploadFile(
             @PathVariable String jobId,
             @PathVariable String userId,
             @RequestParam("file") MultipartFile file) {
@@ -37,6 +40,8 @@ public class ResumeController {
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+        } catch (ValidationException e) {
+            return ResponseFactory.badRequest(e.getMessage());
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));

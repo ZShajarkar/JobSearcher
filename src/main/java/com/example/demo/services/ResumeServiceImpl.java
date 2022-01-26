@@ -6,12 +6,14 @@ import com.example.demo.dto.UserDto;
 import com.example.demo.mapper.ResumeMapper;
 import com.example.demo.model.Resume;
 import com.example.demo.repository.ResumeRepository;
+import com.example.demo.validation.ResumeValidation;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.bind.ValidationException;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,15 +22,17 @@ import java.util.stream.Stream;
 public class ResumeServiceImpl implements ResumeService {
     private final ResumeRepository resumeRepository;
     private final ResumeMapper resumeMapper;
+    private final ResumeValidation resumeValidation;
 
     @Autowired
-    public ResumeServiceImpl(ResumeRepository resumeRepository, ResumeMapper resumeMapper) {
+    public ResumeServiceImpl(ResumeRepository resumeRepository, ResumeMapper resumeMapper, ResumeValidation resumeValidation) {
         this.resumeRepository = resumeRepository;
         this.resumeMapper = resumeMapper;
+        this.resumeValidation = resumeValidation;
     }
 
     @Override
-    public Resume store(String jobId, String userId, MultipartFile file) throws IOException {
+    public Resume store(String jobId, String userId, MultipartFile file) throws IOException, ValidationException {
         String originalFilename = file.getOriginalFilename();
         String fileName = StringUtils.cleanPath(originalFilename);
         JobDto job = new JobDto();
@@ -37,6 +41,7 @@ public class ResumeServiceImpl implements ResumeService {
         UserDto user = new UserDto();
         user.setId(Long.valueOf(userId));
         ResumeDto resume = new ResumeDto(fileName, file.getContentType(), file.getBytes(), job, user);
+        resumeValidation.validateFirstSend(Long.valueOf(userId), Long.valueOf(jobId));
         return resumeRepository.save(this.resumeMapper.toModel(resume));
     }
 

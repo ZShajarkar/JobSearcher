@@ -15,5 +15,11 @@ public interface ResumeRepository extends JpaRepository<Resume, String> {
             "select r from Resume r where r.job.id=:job"
     )
     List<Resume> findByJob(@Param("job") Long job);
+
+
+    @Query(
+            "select r from Resume r where r.job.id=:job AND r.user.id=:user"
+    )
+    List<Resume> findByJobAndUser(@Param("job") Long job,@Param(("user"))Long user);
 }
 

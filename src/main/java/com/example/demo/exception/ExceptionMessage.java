@@ -35,5 +35,6 @@ public final class ExceptionMessage {
     public static final String ABOUT_JOB__MUST_BE_FILLED = "توضیحات درباره شغل می بایست پر شده باشند";
     public static final String JOB_GROUP_MUST_BE_FILLED = "گروه شغلی می بایست پر شده باشند";
 
-
+    //ResumeMessage
+    public static final String YOU_HAVE_BEEN_SENT_RESUME = "شما قبلا برای این موقعیت شغلی رزومه ارسال کرده اید";
 }

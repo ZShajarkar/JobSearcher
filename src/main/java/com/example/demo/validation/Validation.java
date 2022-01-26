@@ -18,7 +18,7 @@ public final class Validation {
     }
 
     public static void notEmpty(String inout, String message) throws ValidationException {
-        if (inout.trim().isEmpty())
+        if (inout == null || inout.trim().isEmpty())
             throw new ValidationException(message);
     }
 
