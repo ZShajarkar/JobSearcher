@@ -34,8 +34,8 @@ public class UserValidation {
 
         checkUniqueEmail(userInfo.getEmail());
 
-        Validation.validateIfPersian(userInfo.getFirstName(), ExceptionMessage.FIRST_NAME_MUST_BE_LETTER);
-        Validation.validateIfPersian(userInfo.getLastName(), ExceptionMessage.LAST_NAME_MUST_BE_LETTER);
+        Validation.validateIfPersian(userInfo.getFirstName().replaceAll(" ", ""), ExceptionMessage.FIRST_NAME_MUST_BE_LETTER);
+        Validation.validateIfPersian(userInfo.getLastName().replaceAll(" ", ""), ExceptionMessage.LAST_NAME_MUST_BE_LETTER);
     }
 
     private void checkUniqueEmail(String email) throws Exception {
