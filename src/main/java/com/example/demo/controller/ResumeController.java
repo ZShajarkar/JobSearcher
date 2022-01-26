@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.model.Resume;
 import com.example.demo.response.ResponseDb;
-import com.example.demo.response.ResponseMessage;
 import com.example.demo.services.ResumeService;
 import com.example.demo.util.ResponseFactory;
 import javassist.NotFoundException;
@@ -37,14 +37,11 @@ public class ResumeController {
         String message;
         try {
             storageService.store(jobId, userId, file);
-
-            message = "Uploaded the file successfully: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+            return ResponseFactory.ok(ExceptionMessage.RESUME_UPLOADED_SUCCESSFULLY);
         } catch (ValidationException e) {
             return ResponseFactory.badRequest(e.getMessage());
         } catch (Exception e) {
-            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+            return ResponseFactory.badRequest(ExceptionMessage.FILE_COULD_NOT_UPLOAD);
         }
     }
 

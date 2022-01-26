@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.xml.bind.ValidationException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -19,6 +20,11 @@ public final class Validation {
 
     public static void notEmpty(String inout, String message) throws ValidationException {
         if (inout == null || inout.trim().isEmpty())
+            throw new ValidationException(message);
+    }
+
+    public static void notEmpty(List<?> inout, String message) throws ValidationException {
+        if (inout.isEmpty())
             throw new ValidationException(message);
     }
 

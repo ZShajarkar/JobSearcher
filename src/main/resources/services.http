@@ -7,7 +7,7 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "شرکت طاها",
+  "companyName": " هزاده",
   "city": "تهران",
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200"
@@ -24,9 +24,9 @@ Content-Type: application/json
   "jobGroup": "طراحی",
   "salary": "2333",
   "jobDescription": "با محیطی مفرح",
-  "skill": "java",
+  "skills": ["java","spring"],
   "company": {
-    "id": 9
+    "id": 1
   }
 }
 
@@ -36,7 +36,7 @@ POST http://localhost:8084/public/process_register
 Content-Type: application/json
 
 {
-  "email": "zeinab2a@gmail.com",
+  "email": "zeingab2a@gmail.com",
   "password": "sSSssd78@5*",
   "firstName": "زینب",
   "lastName": "شجرکار       ",
@@ -50,7 +50,7 @@ GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=ته
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/upload/job/2/user/13
+POST http://localhost:8084/upload/job/1/user/2
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody

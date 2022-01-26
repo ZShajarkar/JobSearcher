@@ -32,9 +32,11 @@ public final class ExceptionMessage {
     //JobMessage
     public static final String JOB_TITLE_MUST_BE_FILLED = "عنوان شغلی باید پر شده باشد";
     public static final String JOB_SKILLS_MUST_BE_FILLED = "توانایی ها می بایست پر شده باشند";
-    public static final String ABOUT_JOB__MUST_BE_FILLED = "توضیحات درباره شغل می بایست پر شده باشند";
+    public static final String ABOUT_JOB_MUST_BE_FILLED = "توضیحات درباره شغل می بایست پر شده باشند";
     public static final String JOB_GROUP_MUST_BE_FILLED = "گروه شغلی می بایست پر شده باشند";
 
     //ResumeMessage
     public static final String YOU_HAVE_BEEN_SENT_RESUME = "شما قبلا برای این موقعیت شغلی رزومه ارسال کرده اید";
+    public static final String RESUME_UPLOADED_SUCCESSFULLY = "رزومه با موفقیت ارسال شد";
+    public static final String FILE_COULD_NOT_UPLOAD = "فایل اپلود نشد";
 }

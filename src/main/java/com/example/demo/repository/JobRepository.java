@@ -12,7 +12,7 @@ import java.util.List;
 public interface JobRepository extends JpaRepository<Job, Long> {
     @Query(
             "select job from Job job inner join Company company on job.company.id=company.id " +
-                    "where (:jobTitle is null or job.JobTitle=:jobTitle) and(:city is null or company.city=:city)")
+                    "where (:jobTitle is null or job.JobTitle=:jobTitle) and(:city is null or company.city=:city)  ")
     List<Job> findByJobTitleAndCity(
             @Param("jobTitle") String jobTitle,
             @Param("city") String city

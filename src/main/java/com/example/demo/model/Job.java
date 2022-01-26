@@ -3,7 +3,10 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import java.math.BigInteger;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -13,16 +16,18 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true,   length = 100)
+    @Column(nullable = false, length = 100)
     private String JobTitle;
-    @Column(nullable = true,   length = 100)
+    @Column(nullable = false, length = 100)
     private String JobGroup;
-    @Column(nullable = true,   length = 100)
-    private String Salary;
-    @Column(nullable = true,   length = 100)
+    @Column(nullable = true)
+    @Min(value = 0,message = "حقوق می بایست عدد مثبت باشد")
+    private BigInteger Salary;
+    @Column(nullable = false, length = 100)
     private String jobDescription;
-    @Column(nullable = true,   length = 100)
-    private String skill;
+    @ElementCollection
+    @Column(nullable = false, length = 100)
+    private List<String> skills;
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Resume> resumes = new HashSet<>();
 
@@ -55,11 +60,11 @@ public class Job {
         JobGroup = jobGroup;
     }
 
-    public String getSalary() {
+    public BigInteger getSalary() {
         return Salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(BigInteger salary) {
         Salary = salary;
     }
 
@@ -71,12 +76,12 @@ public class Job {
         this.jobDescription = jobDescription;
     }
 
-    public String getSkill() {
-        return skill;
+    public List<String> getSkills() {
+        return skills;
     }
 
-    public void setSkill(String skill) {
-        this.skill = skill;
+    public void setSkills(List<String> skill) {
+        this.skills = skill;
     }
 
     public Company getCompany() {

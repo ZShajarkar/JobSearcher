@@ -3,7 +3,9 @@ package com.example.demo.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -12,9 +14,9 @@ public class JobDto {
     private Long id;
     private String jobTitle;
     private String jobGroup;
-    private String salary;
+    private BigInteger salary;
     private String jobDescription;
-    private String skill;
+    private List<String> skills;
     private CompanyDto company;
     private Set<ResumeDto> resumes = new HashSet<>();
 }
