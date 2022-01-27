@@ -12,5 +12,7 @@ public class JobValidation {
         Validation.notEmpty(jobDto.getJobDescription(), ExceptionMessage.ABOUT_JOB_MUST_BE_FILLED);
         Validation.notEmpty(jobDto.getJobGroup(), ExceptionMessage.JOB_GROUP_MUST_BE_FILLED);
         Validation.notNull(jobDto.getCompany().getId(), ExceptionMessage.INPUT_NOT_CORRECT);
+
+        Validation.validatePositiveNumber(jobDto.getSalary(), ExceptionMessage.SALARY_MUST_BE_POSITIVE);
     }
 }

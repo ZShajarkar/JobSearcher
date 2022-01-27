@@ -2,12 +2,15 @@ GET http://localhost:8084/public/provinces/v1
 
 ### گرفتن لیست شهر ها------------------------------------------------------
 
+GET http://localhost:8084/public/job-groups/v1
+
+### گرفتن لیست گروه های شغلی
 
 POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": " هزاده",
+  "companyName": " ه زاده",
   "city": "تهران",
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200"
@@ -22,7 +25,7 @@ Content-Type: application/json
 {
   "jobTitle": "برنامه نویس",
   "jobGroup": "طراحی",
-  "salary": "2333",
+  "salary": 13,
   "jobDescription": "با محیطی مفرح",
   "skills": ["java","spring"],
   "company": {
@@ -50,7 +53,7 @@ GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=ته
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/upload/job/1/user/2
+POST http://localhost:8084/upload/job/1/user/1
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
@@ -64,9 +67,7 @@ GET http://localhost:8084/files
 
 ### دانلود رزومه ها
 
-GET http://localhost:8084/public/job-groups/v1
 
-### گرفتن لیست گروه های شغلی
 
 
 

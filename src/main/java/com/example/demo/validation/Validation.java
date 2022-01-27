@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.xml.bind.ValidationException;
+import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -44,7 +45,10 @@ public final class Validation {
         if (input == null)
             throw new Exception(message);
     }
-
+    public static void validatePositiveNumber(BigInteger number,String message) throws Exception {
+        if (number.compareTo(BigInteger.valueOf(0))<0)
+            throw new Exception(message);
+    }
     public static void validateIfPersian(String input, String message) throws ValidationException {
         if (!Pattern.compile(Constants.JUST_PERSIAN_PATTERN)
                 .matcher(input.trim())
