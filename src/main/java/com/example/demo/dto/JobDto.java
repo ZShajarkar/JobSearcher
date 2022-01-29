@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,4 +20,5 @@ public class JobDto {
     private List<String> skills;
     private CompanyDto company;
     private Set<ResumeDto> resumes = new HashSet<>();
+    private LocalDate registeredDate;
 }

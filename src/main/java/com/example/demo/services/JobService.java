@@ -8,4 +8,6 @@ public interface JobService {
     JobDto save(JobDto jobDto) throws Exception;
 
     List<JobDto> findByJobTitleAndCity(String jobTitle, String city);
+
+    void deleteAfterTenDays();
 }

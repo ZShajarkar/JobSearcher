@@ -36,4 +36,13 @@ public class JobController {
             return ResponseFactory.badRequest(exception.getMessage());
         }
     }
+
+    @DeleteMapping()
+    public void deleteAfterTenDays() {
+        try {
+            this.jobService.deleteAfterTenDays();
+        } catch (Exception exception) {
+            System.out.println("خطا");
+        }
+    }
 }

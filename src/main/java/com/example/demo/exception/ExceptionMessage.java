@@ -35,6 +35,7 @@ public final class ExceptionMessage {
     public static final String ABOUT_JOB_MUST_BE_FILLED = "توضیحات درباره شغل می بایست پر شده باشند";
     public static final String JOB_GROUP_MUST_BE_FILLED = "گروه شغلی می بایست پر شده باشند";
     public static final String SALARY_MUST_BE_POSITIVE = "حقوق می بایست عددی مثبت باشد";
+    public static final String JOB_HAS_BEEN_DECLARED_IN_TEN_PAST_DAYS = "شغلی با این عنوان در ده روز گذشته ثبت شده است";
 
     //ResumeMessage
     public static final String YOU_HAVE_BEEN_SENT_RESUME = "شما قبلا برای این موقعیت شغلی رزومه ارسال کرده اید";

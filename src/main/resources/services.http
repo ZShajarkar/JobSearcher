@@ -23,7 +23,7 @@ POST http://localhost:8084/public/job/v1
 Content-Type: application/json
 
 {
-  "jobTitle": "برنامه نویس",
+  "jobTitle": "2برنامه نویس",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",

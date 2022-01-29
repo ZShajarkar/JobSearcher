@@ -48,7 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        //ToDo replace /list_users with resumeBuilder and sendRequest for job
+        //ToDo replace /list_users with
+        // http.csrf.disable(0.authorizedbhkdbdbjkebjresumeBuilder anfgfjfhbjweb devloper ;d sendRequest for job
 
         http .csrf().disable() .authorizeRequests() .anyRequest().permitAll();
        // http

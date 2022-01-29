@@ -2,10 +2,23 @@ package com.example.demo.validation;
 
 import com.example.demo.dto.JobDto;
 import com.example.demo.exception.ExceptionMessage;
+import com.example.demo.model.Job;
+import com.example.demo.repository.JobRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.xml.bind.ValidationException;
+import java.util.List;
 
 @Component
 public class JobValidation {
+    private final JobRepository jobRepository;
+
+    @Autowired
+    public JobValidation(JobRepository jobRepository) {
+        this.jobRepository = jobRepository;
+    }
+
     public void validateJob(JobDto jobDto) throws Exception {
         Validation.notEmpty(jobDto.getJobTitle(), ExceptionMessage.JOB_TITLE_MUST_BE_FILLED);
         Validation.notEmpty(jobDto.getSkills(), ExceptionMessage.JOB_SKILLS_MUST_BE_FILLED);
@@ -14,5 +27,13 @@ public class JobValidation {
         Validation.notNull(jobDto.getCompany().getId(), ExceptionMessage.INPUT_NOT_CORRECT);
 
         Validation.validatePositiveNumber(jobDto.getSalary(), ExceptionMessage.SALARY_MUST_BE_POSITIVE);
+
+        validateUniqueJobForCompany(jobDto);
+    }
+
+    private void validateUniqueJobForCompany(JobDto jobDto) throws ValidationException {
+        List<Job> byCompanyAndJobId = this.jobRepository.findByCompanyAndJobId(jobDto.getJobTitle(), jobDto.getCompany().getId());
+        if (!byCompanyAndJobId.isEmpty())
+            throw new ValidationException(ExceptionMessage.JOB_HAS_BEEN_DECLARED_IN_TEN_PAST_DAYS);
     }
 }
