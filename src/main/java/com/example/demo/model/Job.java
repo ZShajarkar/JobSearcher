@@ -41,5 +41,7 @@ public class Job {
     private Company company;
     @Column(nullable = false)
     private LocalDate registeredDate;
+    @Column(columnDefinition = "boolean default false", nullable = false)
+    private boolean deleted;
 
 }

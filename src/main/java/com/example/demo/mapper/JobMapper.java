@@ -28,6 +28,7 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         job.setSkills(dto.getSkills());
         job.setCompany(this.companyMapper.toModel(dto.getCompany()));
         job.setRegisteredDate(dto.getRegisteredDate());
+        job.setDeleted(dto.isDeleted());
         return job;
     }
 
@@ -45,6 +46,7 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         jobDto.setSkills(jobModel.getSkills());
         jobDto.setCompany(this.companyMapper.toDto(jobModel.getCompany()));
         jobDto.setRegisteredDate(jobModel.getRegisteredDate());
+        jobDto.setDeleted(jobModel.isDeleted());
         return jobDto;
     }
 }

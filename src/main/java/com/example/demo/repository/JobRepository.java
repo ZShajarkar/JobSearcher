@@ -22,7 +22,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     );
 
     @Query(
-            "select job from Job job where job.JobTitle=:jobTitle and job.company.id=:companyId")
+            "select job from Job job where job.JobTitle=:jobTitle and job.company.id=:companyId and job.deleted=false ")
     List<Job> findByCompanyAndJobId(@Param("jobTitle") String jobTitle,
                                     @Param("companyId") Long companyId
 
@@ -31,21 +31,9 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Transactional
     @Modifying
     @Query(
-            "DELETE FROM Job job where job.registeredDate=:date")
+            "UPDATE Job job set job.deleted=true where job.registeredDate=:date")
     void deleteAfterTenDays(@Param("date") LocalDate days
     );
 
-    @Transactional
-    @Modifying
-    @Query(value = "DELETE FROM job_skills WHERE job_id IN :ids ", nativeQuery = true)
-    void deleteJobSkillsAfterTenDays(@Param("ids") List<Long> ids
-    );
-
-    @Transactional
-    @Modifying
-    @Query(value = "select job.id from Job job where job.registeredDate=:date")
-    List<Long> selectExpiredJobIds(
-            @Param("date") LocalDate days
-    );
 
 }

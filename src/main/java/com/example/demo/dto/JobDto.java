@@ -21,4 +21,5 @@ public class JobDto {
     private CompanyDto company;
     private Set<ResumeDto> resumes = new HashSet<>();
     private LocalDate registeredDate;
+    private boolean deleted;
 }

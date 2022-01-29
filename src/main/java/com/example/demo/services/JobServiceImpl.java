@@ -41,14 +41,12 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    @Scheduled(cron = Constants.EVERY_DAY)
-    //  @Scheduled(cron = "*/10 * * * * *")
+  //  @Scheduled(cron = Constants.EVERY_DAY)
+      @Scheduled(cron = "*/10 * * * * *")
     public void deleteAfterTenDays() {
         LocalDate localDate = LocalDate.now();
         // localDate.minusDays(10);
         localDate.minusDays(0);
-        List<Long> jobIds = this.jobRepository.selectExpiredJobIds(localDate);
-        this.jobRepository.deleteJobSkillsAfterTenDays(jobIds);
         this.jobRepository.deleteAfterTenDays(localDate);
     }
 }
