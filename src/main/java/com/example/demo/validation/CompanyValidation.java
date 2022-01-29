@@ -24,7 +24,7 @@ public class CompanyValidation {
 
         validateUniqueCompanyAndCity(companyDto.getCompanyName(), companyDto.getCity());
 
-        Validation.validateIfPersian(companyDto.getCompanyName().replaceAll(" ", ""), ExceptionMessage.COMPANY_NAME_MUST_BE_LETTER);
+        Validation.validateIfPersian(companyDto.getCompanyName(), ExceptionMessage.COMPANY_NAME_MUST_BE_LETTER);
     }
 
     private void validateUniqueCompanyAndCity(String company, String city) throws ValidationException {

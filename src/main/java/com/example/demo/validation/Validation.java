@@ -51,7 +51,7 @@ public final class Validation {
     }
     public static void validateIfPersian(String input, String message) throws ValidationException {
         if (!Pattern.compile(Constants.JUST_PERSIAN_PATTERN)
-                .matcher(input.trim())
+                .matcher(input.trim().replaceAll(" ", ""))
                 .matches())
             throw new ValidationException(message);
     }
