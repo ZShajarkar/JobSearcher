@@ -53,7 +53,8 @@ GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/upload/job/1/user/1
+POST http://localhost:8084/public/resume/v1/job/1/user/1
+Authorization:Bearer token
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
