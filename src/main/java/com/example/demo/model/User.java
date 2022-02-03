@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,8 +26,9 @@ public class User implements Serializable {
     @Column(nullable = false, unique = true, length = 45)
     @NotBlank
     private String email;
-    @Column(nullable = false, length = 64)
+    @Column(nullable = false)
     @NotBlank
+    @Size(max = 120)
     private String password;
     @Column(nullable = false, length = 20)
     @NotBlank

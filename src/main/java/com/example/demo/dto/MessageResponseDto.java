@@ -1,14 +1,14 @@
-package com.example.demo.configuration;
+package com.example.demo.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class MessageResponse {
+public class MessageResponseDto {
     private String message;
 
-    public MessageResponse(String message) {
+    public MessageResponseDto(String message) {
         this.message = message;
     }
 }

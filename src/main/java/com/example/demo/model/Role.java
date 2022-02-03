@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import com.example.demo.enums.RoleValue;
+import com.example.demo.enums.ERole;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +21,5 @@ public class Role {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private RoleValue name;
+    private ERole name;
 }

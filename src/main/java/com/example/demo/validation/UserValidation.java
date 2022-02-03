@@ -1,5 +1,6 @@
 package com.example.demo.validation;
 
+import com.example.demo.dto.SignUpUserRequestDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.repository.UserRepository;
@@ -15,7 +16,7 @@ public class UserValidation {
         this.userRepository = userRepository;
     }
 
-    public void validateUser(UserDto userInfo) throws Exception {
+    public void validateUser(SignUpUserRequestDto userInfo) throws Exception {
         Validation.notEmpty(userInfo.getFirstName(), ExceptionMessage.FIRST_NAME_MUST_BE_FILLED);
         Validation.notEmpty(userInfo.getLastName(), ExceptionMessage.LAST_NAME_MUST_BE_FILLED);
         Validation.notEmpty(userInfo.getEmail(), ExceptionMessage.EMAIL_MUST_BE_FILLED);

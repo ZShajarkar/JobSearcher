@@ -1,6 +1,6 @@
 package com.example.demo.enums;
 
-public enum RoleValue {
+public enum ERole {
     ROLE_USER,
     ROLE_COMPANY,
     ADMIN
