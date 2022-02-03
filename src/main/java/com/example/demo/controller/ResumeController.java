@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/public/resume/v1")
 public class ResumeController {
 
     private final ResumeService storageService;
@@ -28,8 +30,8 @@ public class ResumeController {
     public ResumeController(ResumeService storageService) {
         this.storageService = storageService;
     }
-
-    @PostMapping("/upload/job/{jobId}/user/{userId}")
+    @PreAuthorize("hasRole('USER')")
+    @PostMapping("/job/{jobId}/user/{userId}")
     public ResponseEntity<?> uploadFile(
             @PathVariable String jobId,
             @PathVariable String userId,

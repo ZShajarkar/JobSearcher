@@ -11,6 +11,10 @@ import java.util.Collections;
 public class CustomUserDetailsImpl implements UserDetails {
     private final User user;
 
+    public User getUser() {
+        return user;
+    }
+
     @Autowired
     public CustomUserDetailsImpl(User user) {
         this.user = user;

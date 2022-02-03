@@ -35,11 +35,11 @@ Content-Type: application/json
 
 ### ثبت نام آگهی --------------------------------------------------------------------
 ### پیش نیاز ثبت آگهی ثبت شرکت است ---------------------------------------------------
-POST http://localhost:8084/public/process_register
+POST http://localhost:8084/public/user/process_register
 Content-Type: application/json
 
 {
-  "email": "zeingab2a@gmail.com",
+  "email": "zshajadfsrkar@yahoo.com",
   "password": "sSSssd78@5*",
   "firstName": "زینب",
   "lastName": "شجرکار       ",
@@ -47,13 +47,14 @@ Content-Type: application/json
 }
 
 ### ثبت نام کاربر ----------------------------------------------------------------------
-GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=تهران
+GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
 
 ### جستجو شغل ----------------------------------------------------------------------
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/upload/job/1/user/1
+POST http://localhost:8084/public/resume/v1/job/1/user/1
+Authorization:Bearer token
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
@@ -61,12 +62,19 @@ Content-Disposition: form-data; name="file"; filename="why.png""< "\H:\why.png"
 
 --requestBody--
 
-### آپلود رزومه
+### آپلود رزومه -نیاز به header دارد
 
 GET http://localhost:8084/files
 
 ### دانلود رزومه ها
+POST http://localhost:8084/public/user/sign_in
+Content-Type: application/json
 
+{
+  "email": "zshajadfsrkar@yahoo.com",
+  "password": "sSSssd78@5*"
+}
+### login
 
 
 

@@ -1,20 +1,16 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
-
 @Getter
 @Setter
-public class UserDto extends SignupRequest {
-
-    private Long id;
+public class SignUpUserResponseDto {
     private String email;
-    private String password;
+    private Set<Role> roles;
     private String firstName;
     private String lastName;
-    private Set<ResumeDto> resumes = new HashSet<>();
+    private Long id;
 }
-
