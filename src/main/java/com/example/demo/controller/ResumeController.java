@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ResumeDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.model.Resume;
 import com.example.demo.response.ResponseDb;
+import com.example.demo.response.RestResponse;
 import com.example.demo.services.ResumeService;
 import com.example.demo.util.ResponseFactory;
 import javassist.NotFoundException;
@@ -75,9 +77,9 @@ public class ResumeController {
                 .body(fileDB.getData());
     }
 
-    @GetMapping("/job/{job-id}")
-    public ResponseEntity<?> getResumesByJobId(@PathVariable("job-id") Long jobId) throws NotFoundException {
-        return ResponseEntity.ok().body(storageService.getResumesByJobId(jobId));
+    @GetMapping(value = "/job/{job-id}",produces = "application/json")
+    public ResponseEntity<RestResponse<List<ResumeDto>>> getResumesByJobId(@PathVariable("job-id") Long jobId) throws NotFoundException {
+        return ResponseFactory.ok(storageService.getResumesByJobId(jobId));
     }
 
 }

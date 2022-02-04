@@ -1,13 +1,16 @@
 package com.example.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResumeDto {
+public class ResumeDto implements Serializable {
     private String id;
     private String name;
     private String type;
