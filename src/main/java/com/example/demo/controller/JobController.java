@@ -5,6 +5,7 @@ import com.example.demo.services.JobService;
 import com.example.demo.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -20,6 +21,7 @@ public class JobController {
 
 
     @PostMapping(consumes = "application/json", produces = "application/json")
+    @PreAuthorize("hasRole('COMPANY')")
     public ResponseEntity<?> save(@RequestBody JobDto jobDto) {
         try {
             return ResponseFactory.ok(this.jobService.save(jobDto));
@@ -34,15 +36,6 @@ public class JobController {
             return ResponseFactory.ok(this.jobService.findByJobTitleAndCity(jobTitle, city));
         } catch (Exception exception) {
             return ResponseFactory.badRequest(exception.getMessage());
-        }
-    }
-
-    @DeleteMapping()
-    public void deleteAfterTenDays() {
-        try {
-            this.jobService.deleteAfterTenDays();
-        } catch (Exception exception) {
-            System.out.println("خطا");
         }
     }
 }

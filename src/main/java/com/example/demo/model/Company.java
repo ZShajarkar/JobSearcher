@@ -4,13 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Company",uniqueConstraints = { @UniqueConstraint(columnNames = { "companyName", "city" }) })
+@Table(name = "Company", uniqueConstraints = {@UniqueConstraint(columnNames = {"companyName", "city"})})
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +28,18 @@ public class Company {
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Job> jobs = new HashSet<>();
+    @Column(nullable = false, unique = true, length = 45)
+    @NotBlank
+    private String email;
+    @Column(nullable = false)
+    @NotBlank
+    @Size(max = 120)
+    private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "company_roles",
+            joinColumns = @JoinColumn(name = "company_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
 }

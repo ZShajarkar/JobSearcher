@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.model.Company;
 import com.example.demo.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,6 +41,19 @@ public class UserDetailsImpl implements UserDetails {
                 user.getEmail(),
                 user.getEmail(),
                 user.getPassword(),
+                authorities);
+    }
+
+    public static UserDetailsImpl build(Company company) {
+        List<GrantedAuthority> authorities = company.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+
+        return new UserDetailsImpl(
+                company.getId(),
+                company.getEmail(),
+                company.getEmail(),
+                company.getPassword(),
                 authorities);
     }
 

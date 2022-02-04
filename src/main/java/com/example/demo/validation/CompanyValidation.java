@@ -1,6 +1,7 @@
 package com.example.demo.validation;
 
 import com.example.demo.dto.CompanyDto;
+import com.example.demo.dto.SignUpCompanyRequestDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class CompanyValidation {
         this.companyRepository = companyRepository;
     }
 
-    public void validate(CompanyDto companyDto) throws ValidationException {
+    public void validate(SignUpCompanyRequestDto companyDto) throws ValidationException {
         Validation.notEmpty(companyDto.getCompanyName(), ExceptionMessage.COMPANY_NAME_IS_REQUIRED);
         Validation.notEmpty(companyDto.getAboutCompany(), ExceptionMessage.ABOUT_COMPANY_IS_REQUIRED);
         Validation.notEmpty(companyDto.getAddress(), ExceptionMessage.COMPANY_ADDRESS_IS_REQUIRED);
