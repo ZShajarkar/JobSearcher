@@ -27,6 +27,7 @@ public class CompanyValidation {
 
         validateUniqueCompanyAndCity(companyDto.getCompanyName(), companyDto.getCity());
 
+
         Validation.validateIfPersian(companyDto.getCompanyName(), ExceptionMessage.COMPANY_NAME_MUST_BE_LETTER);
         Validation.validateEmail(companyDto.getEmail());
         validateUniqueEmail(companyDto.getEmail());

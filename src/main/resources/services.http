@@ -10,27 +10,28 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": " ه زاده",
+  "companyName": "تستی امروز",
   "city": "تهران",
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
-  "address": " خیابان انقلاب،پلاک 200"
+  "address": " خیابان انقلاب،پلاک 200",
+  "email": "sarashahbazi@yahoo.com",
+  "password": "sSSssd78@5*",
+  "confirmPassword": "sSSssd78@5*"
 }
 
 ### ثبت شرکت ------------------------------------------------------------------
 
 
 POST http://localhost:8084/public/job/v1
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlAeWFob28uY29tQGNvbXBhbnkiLCJpYXQiOjE2NDQwODAzNjksImV4cCI6MTY0NDE2Njc2OX0.rLe1jNkh5YYTOOrVm6Vp2dlKs4QV_ZtcMzpI99Owc3tAtJU4PT2o60X2g5-IJ9JKY-lw_pxNb23-5DMLA3OE3g
 Content-Type: application/json
 
 {
-  "jobTitle": "2برنامه نویس",
+  "jobTitle": "ص2ی برناسسسمه نوسسسیس",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
-  "skills": ["java","spring"],
-  "company": {
-    "id": 1
-  }
+  "skills": ["java","spring"]
 }
 
 ### ثبت نام آگهی --------------------------------------------------------------------
@@ -39,7 +40,7 @@ POST http://localhost:8084/public/user/process_register
 Content-Type: application/json
 
 {
-  "email": "zshajadfsrkar@yahoo.com",
+  "email": "sarashajarkhhar@yahoo.com",
   "password": "sSSssd78@5*",
   "firstName": "زینب",
   "lastName": "شجرکار       ",
@@ -47,18 +48,18 @@ Content-Type: application/json
 }
 
 ### ثبت نام کاربر ----------------------------------------------------------------------
-GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس
+GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=تهران
 
 ### جستجو شغل ----------------------------------------------------------------------
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
-POST http://localhost:8084/public/resume/v1/job/1/user/1
-Authorization:Bearer token
+POST http://localhost:8084/public/resume/v1/job/7
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFkZnNya2FyQHlhaG9vLmNvbSIsImlhdCI6MTY0NDA4NDg5OCwiZXhwIjoxNjQ0MTcxMjk4fQ.VZrOiEL3jUW94yK8L8GUNyxEBVg44H_4NkeQxKNfUOCKhRcCWFrAyHZxcXPSWsv03NQpmH9-BfWC_HhB2XsDew
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
-Content-Disposition: form-data; name="file"; filename="why.png""< "\H:\why.png"
+Content-Disposition: form-data; name="file"; filename="test.jpg""< "\D:\data\test.jpg"
 
 --requestBody--
 
@@ -74,8 +75,17 @@ Content-Type: application/json
   "email": "zshajadfsrkar@yahoo.com",
   "password": "sSSssd78@5*"
 }
-### login
+### login user
 
+POST http://localhost:8084/public/company/v1/sign-in
+Content-Type: application/json
+
+{
+  "email": "sarashahbazi@yahoo.com",
+  "password": "sSSssd78@5*"
+}
+
+### login company
 
 
 

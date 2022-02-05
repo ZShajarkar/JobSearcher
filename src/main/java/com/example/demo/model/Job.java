@@ -3,6 +3,7 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -39,8 +40,8 @@ public class Job {
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(nullable = false)
     private Company company;
-    @Column(nullable = false)
-    private LocalDate registeredDate;
+    @CreationTimestamp
+    private LocalDate registeredDate=LocalDate.now();
     @Column(columnDefinition = "boolean default false", nullable = false)
     private boolean deleted;
 

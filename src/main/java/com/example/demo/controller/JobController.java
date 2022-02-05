@@ -22,9 +22,9 @@ public class JobController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @PreAuthorize("hasRole('COMPANY')")
-    public ResponseEntity<?> save(@RequestBody JobDto jobDto) {
+    public ResponseEntity<?> save(@RequestBody JobDto jobDto, @RequestHeader("Authorization") String token) {
         try {
-            return ResponseFactory.ok(this.jobService.save(jobDto));
+            return ResponseFactory.ok(this.jobService.save(jobDto, token));
         } catch (Exception exception) {
             return ResponseFactory.badRequest(exception.getMessage());
         }

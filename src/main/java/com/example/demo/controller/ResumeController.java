@@ -33,14 +33,14 @@ public class ResumeController {
         this.storageService = storageService;
     }
     @PreAuthorize("hasRole('USER')")
-    @PostMapping("/job/{jobId}/user/{userId}")
+    @PostMapping("/job/{jobId}")
     public ResponseEntity<?> uploadFile(
             @PathVariable String jobId,
-            @PathVariable String userId,
+            @RequestHeader("Authorization") String token,
             @RequestParam("file") MultipartFile file) {
         String message;
         try {
-            storageService.store(jobId, userId, file);
+            storageService.store(jobId, file,token);
             return ResponseFactory.ok(ExceptionMessage.RESUME_UPLOADED_SUCCESSFULLY);
         } catch (ValidationException e) {
             return ResponseFactory.badRequest(e.getMessage());

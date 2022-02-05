@@ -76,7 +76,7 @@ public class ResponseFactory {
     }
 
     //todo standardize exceptions
-    public static ResponseEntity<?> handel(HttpClientErrorException e) {
+    public static ResponseEntity<?> handle(HttpClientErrorException e) {
         switch (e.getStatusCode().value()) {
             case 204:
                 return noContent(e.getMessage());

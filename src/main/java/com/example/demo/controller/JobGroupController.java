@@ -26,7 +26,7 @@ public class JobGroupController {
         try {
             return ResponseFactory.ok(jobGroupService.getJobGroups());
         } catch (Exception e) {
-            return ResponseFactory.handel((HttpClientErrorException) e);
+            return ResponseFactory.handle((HttpClientErrorException) e);
         }
     }
 }

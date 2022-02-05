@@ -23,25 +23,27 @@ public class ResumeServiceImpl implements ResumeService {
     private final ResumeRepository resumeRepository;
     private final ResumeMapper resumeMapper;
     private final ResumeValidation resumeValidation;
+    private final AuthenticationService authenticationService;
 
     @Autowired
-    public ResumeServiceImpl(ResumeRepository resumeRepository, ResumeMapper resumeMapper, ResumeValidation resumeValidation) {
+    public ResumeServiceImpl(ResumeRepository resumeRepository, ResumeMapper resumeMapper, ResumeValidation resumeValidation, AuthenticationService authenticationService) {
         this.resumeRepository = resumeRepository;
         this.resumeMapper = resumeMapper;
         this.resumeValidation = resumeValidation;
+        this.authenticationService = authenticationService;
     }
 
     @Override
-    public Resume store(String jobId, String userId, MultipartFile file) throws IOException, ValidationException {
+    public Resume store(String jobId, MultipartFile file, String token) throws IOException, ValidationException {
         String originalFilename = file.getOriginalFilename();
         String fileName = StringUtils.cleanPath(originalFilename);
         JobDto job = new JobDto();
         job.setId(Long.valueOf(jobId));
 
         UserDto user = new UserDto();
-        user.setId(Long.valueOf(userId));
+        user.setId(Long.valueOf(authenticationService.getIdOutOfBearerToken(token)));
         ResumeDto resume = new ResumeDto(fileName, file.getContentType(), file.getBytes(), job, user);
-        resumeValidation.validateFirstSend(Long.valueOf(userId), Long.valueOf(jobId));
+        resumeValidation.validateFirstSend(Long.valueOf(user.getId()), Long.valueOf(jobId));
         return resumeRepository.save(this.resumeMapper.toModel(resume));
     }
 

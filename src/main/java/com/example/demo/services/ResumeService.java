@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public interface ResumeService {
-    Resume store(String jobId, String userId, MultipartFile file) throws IOException, ValidationException;
+    Resume store(String jobId,  MultipartFile file,String token) throws IOException, ValidationException;
 
     Resume getFile(String id);
 

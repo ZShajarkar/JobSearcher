@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.dto.CompanyDto;
 import com.example.demo.dto.JobDto;
 import com.example.demo.mapper.JobMapper;
 import com.example.demo.model.Job;
@@ -20,16 +21,18 @@ public class JobServiceImpl implements JobService {
     private final JobRepository jobRepository;
     private final JobMapper jobMapper;
     private final JobValidation jobValidation;
+    private final AuthenticationService authenticationService;
 
     @Autowired
-    public JobServiceImpl(JobRepository jobRepository, JobMapper jobMapper, JobValidation jobValidation) {
+    public JobServiceImpl(JobRepository jobRepository, JobMapper jobMapper, JobValidation jobValidation, AuthenticationService authenticationService) {
         this.jobRepository = jobRepository;
         this.jobMapper = jobMapper;
         this.jobValidation = jobValidation;
+        this.authenticationService = authenticationService;
     }
 
-    public JobDto save(JobDto jobDto) throws Exception {
-        jobDto.setRegisteredDate(LocalDate.now());
+    public JobDto save(JobDto jobDto, String token) throws Exception {
+        jobDto.setCompany(new CompanyDto(authenticationService.getIdOutOfBearerToken(token)));
         jobValidation.validateJob(jobDto);
         Job savedJob = this.jobRepository.save(this.jobMapper.toModel(jobDto));
         return this.jobMapper.toDto(savedJob);
@@ -40,13 +43,11 @@ public class JobServiceImpl implements JobService {
         return this.jobMapper.toDto(jobsByJobTitle);
     }
 
-    @Override
     @Scheduled(cron = Constants.EVERY_DAY)
     // @Scheduled(cron = "*/10 * * * * *")
     public void deleteAfterTenDays() {
-        LocalDate localDate = LocalDate.now();
-        // localDate.minusDays(10);
-        localDate.minusDays(0);
-        this.jobRepository.deleteAfterTenDays(localDate);
+        LocalDate tenDaysAgo = LocalDate.now().minusDays(10);
+        // localDate.minusDays(0);
+        this.jobRepository.deleteAfterTenDays(tenDaysAgo);
     }
 }

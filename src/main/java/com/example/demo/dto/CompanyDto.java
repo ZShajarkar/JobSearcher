@@ -2,6 +2,7 @@ package com.example.demo.dto;
 
 import com.example.demo.model.Job;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CompanyDto {
     private Long id;
     private String companyName;
@@ -16,4 +18,8 @@ public class CompanyDto {
     private String aboutCompany;
     private String address;
     private Set<Job> jobs = new HashSet<>();
+
+    public CompanyDto(Long id) {
+        this.id = id;
+    }
 }

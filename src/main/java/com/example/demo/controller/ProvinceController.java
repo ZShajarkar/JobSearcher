@@ -26,7 +26,7 @@ public class ProvinceController {
         try {
             return ResponseFactory.ok(provinceService.getProvinces());
         } catch (Exception e) {
-            return ResponseFactory.handel((HttpClientErrorException) e);
+            return ResponseFactory.handle((HttpClientErrorException) e);
         }
     }
 }
