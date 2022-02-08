@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class SignUpCompanyRequestDto {
     private String companyName;
-    private String city;
+    private int city;
     private String aboutCompany;
     private String address;
     private String password;

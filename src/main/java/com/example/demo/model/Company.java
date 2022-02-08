@@ -2,8 +2,11 @@ package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -12,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Validated
 @Table(name = "Company", uniqueConstraints = {@UniqueConstraint(columnNames = {"company_name", "city"})})
 public class Company {
     @Id
@@ -20,7 +24,9 @@ public class Company {
     @Column(nullable = false, length = 45,name = "company_name")
     private String companyName;
     @Column(nullable = false, length = 64)
-    private String city;
+    @Min(1)
+    @Max(29)
+    private int city;
     @Column(nullable = false, length = 120)
     private String aboutCompany;
     @Column(nullable = false, length = 80)

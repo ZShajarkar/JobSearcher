@@ -39,7 +39,7 @@ public class JobServiceImpl implements JobService {
         return this.jobMapper.toDto(savedJob);
     }
 
-    public List<JobDto> findByJobTitleAndCity(String jobTitle, String city) {
+    public List<JobDto> findByJobTitleAndCity(String jobTitle, int city) {
         List<Job> jobsByJobTitle = this.jobRepository.findByJobTitleAndCity(jobTitle, city);
         return (List<JobDto>) this.jobMapper.toDto(jobsByJobTitle);
     }

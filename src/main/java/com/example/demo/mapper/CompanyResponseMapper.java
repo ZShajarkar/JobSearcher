@@ -2,10 +2,19 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.SignUpCompanyResponseDto;
 import com.example.demo.model.Company;
+import com.example.demo.services.ProvinceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SignUpCompanyResponseMapper implements DtoToModelMapper<SignUpCompanyResponseDto, Company> {
+public class CompanyResponseMapper implements DtoToModelMapper<SignUpCompanyResponseDto, Company> {
+    private final ProvinceService provinceService;
+
+    @Autowired
+    public CompanyResponseMapper(ProvinceService provinceService) {
+        this.provinceService = provinceService;
+    }
+
     @Override
     public Company toModel(SignUpCompanyResponseDto dto) {
         return null;
@@ -18,7 +27,7 @@ public class SignUpCompanyResponseMapper implements DtoToModelMapper<SignUpCompa
         }
         SignUpCompanyResponseDto companyDto = new SignUpCompanyResponseDto();
         companyDto.setCompanyName(userModel.getCompanyName());
-        companyDto.setCity(userModel.getCity());
+        companyDto.setCity(provinceService.getNameOfProvince(userModel.getCity()));
         companyDto.setEmail(userModel.getEmail());
         companyDto.setId(userModel.getId());
         companyDto.setRoles(userModel.getRoles());

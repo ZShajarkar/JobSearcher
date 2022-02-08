@@ -14,7 +14,7 @@ import java.util.Set;
 public class CompanyDto {
     private Long id;
     private String companyName;
-    private String city;
+    private int city;
     private String aboutCompany;
     private String address;
     private Set<Job> jobs = new HashSet<>();

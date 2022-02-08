@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "تستی لامروز",
-  "city": "تهران",
+  "companyName": "تستی  تستلامروستز",
+  "city": 28,
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "sarashahbazi2@yahoo.com",
+  "email": "sarashahbazibnddwbs2@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,11 +23,11 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlAeWFob28uY29tQGNvbXBhbnkiLCJpYXQiOjE2NDQzMjIxMDMsImV4cCI6MTY0NDQwODUwM30.r6Zh-Tc_RqN0dWNo6wISyCJxbmm2EA90s_97wuw2bAbOOHD1ijOqjOyKzSbYaRFmjkiTZoxREZkI0rr8b12LEg
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlibmRkYnMyQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ0MzQ4MDQzLCJleHAiOjE2NDQ0MzQ0NDN9.Z5q228cLEmzDTnr76sYDG3GRbx0UQETRP4PRsYzoY3ItUyszwObunnUoelCNSVpSU-xWUBJBdfHH-cYpCybDcQ
 Content-Type: application/json
 
 {
-  "jobTitle": "2mmسبرsسیینااddظsمdهdhhdsj نویسss",
+  "jobTitle": "2mmسبرsسیینااddsظsمdهdhhdsj نویسss",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### ثبت نام کاربر ----------------------------------------------------------------------
-GET http://localhost:8084/public/job/v1?jobTitle=برنامه نویس&city=تهران
+GET http://localhost:8084/public/job/v1?city=29
 
 ### جستجو شغل ----------------------------------------------------------------------
 
@@ -91,7 +91,7 @@ POST http://localhost:8084/public/company/v1/sign-in
 Content-Type: application/json
 
 {
-  "email": "sarashahbazi@yahoo.com",
+  "email": "sarashahbazibnddbs2@yahoo.com",
   "password": "sSSssd78@5*"
 }
 

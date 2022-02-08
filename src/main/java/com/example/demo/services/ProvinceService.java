@@ -1,7 +1,8 @@
 package com.example.demo.services;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ProvinceService {
-    List<String> getProvinces();
+    Map<String, Integer> getProvinces();
+    String getNameOfProvince(int id);
 }

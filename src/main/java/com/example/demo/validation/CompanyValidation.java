@@ -33,11 +33,17 @@ public class CompanyValidation {
         validateUniqueEmail(companyDto.getEmail());
         Validation.checkComplicatePassword(companyDto.getPassword());
         Validation.notEqual(companyDto.getConfirmPassword(), companyDto.getPassword(), ExceptionMessage.PASSWORD_DOESNT_MATCH);
+        validateCity(companyDto.getCity());
     }
 
-    private void validateUniqueCompanyAndCity(String company, String city) throws ValidationException {
+    private void validateUniqueCompanyAndCity(String company, int city) throws ValidationException {
         if (companyRepository.findByCompanyAndCity(company, city) != null)
-            throw new ValidationException(ExceptionMessage.COMPANY_AND_NAME_HAVE_BEEN_REGISTERED);
+            throw new ValidationException(ExceptionMessage.CITY_IS_NOT_VALID);
+    }
+
+    private void validateCity(int city) throws ValidationException {
+        if (city > 29 || city < 1)
+            throw new ValidationException(ExceptionMessage.CITY_IS_NOT_VALID);
     }
 
     private void validateUniqueEmail(String email) throws ValidationException {

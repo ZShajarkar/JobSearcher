@@ -18,7 +18,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
                     "where (:jobTitle is null or job.JobTitle like %:jobTitle% ) and(:city is null or company.city=:city)  ")
     List<Job> findByJobTitleAndCity(
             @Param("jobTitle") String jobTitle,
-            @Param("city") String city
+            @Param("city") int city
     );
 
     @Query(

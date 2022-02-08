@@ -12,7 +12,7 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     )
     Company findByCompanyAndCity(
             @Param("companyName") String companyName,
-            @Param("city") String city
+            @Param("city") int city
     );
 
     @Query(

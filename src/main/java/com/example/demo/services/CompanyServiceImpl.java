@@ -6,7 +6,7 @@ import com.example.demo.dto.SignUpCompanyRequestDto;
 import com.example.demo.dto.SignUpCompanyResponseDto;
 import com.example.demo.enums.ERole;
 import com.example.demo.mapper.SignUpCompanyRequestMapper;
-import com.example.demo.mapper.SignUpCompanyResponseMapper;
+import com.example.demo.mapper.CompanyResponseMapper;
 import com.example.demo.model.Company;
 import com.example.demo.model.Role;
 import com.example.demo.repository.CompanyRepository;
@@ -23,7 +23,7 @@ import java.util.Set;
 @Service
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
-    private final SignUpCompanyResponseMapper companyMapper;
+    private final CompanyResponseMapper companyMapper;
     private final CompanyValidation companyValidation;
     private final PasswordEncoder encoder;
     private final SignUpCompanyRequestMapper signUpCompanyRequestMapper;
@@ -31,7 +31,7 @@ public class CompanyServiceImpl implements CompanyService {
     private final AuthenticationService authenticationService;
 
     @Autowired
-    public CompanyServiceImpl(CompanyRepository companyRepository, SignUpCompanyResponseMapper companyMapper, CompanyValidation companyValidation, PasswordEncoder encoder, SignUpCompanyRequestMapper signUpCompanyRequestMapper, RoleRepository roleRepository, AuthenticationService authenticationService) {
+    public CompanyServiceImpl(CompanyRepository companyRepository, CompanyResponseMapper companyMapper, CompanyValidation companyValidation, PasswordEncoder encoder, SignUpCompanyRequestMapper signUpCompanyRequestMapper, RoleRepository roleRepository, AuthenticationService authenticationService) {
         this.companyRepository = companyRepository;
         this.companyMapper = companyMapper;
         this.companyValidation = companyValidation;

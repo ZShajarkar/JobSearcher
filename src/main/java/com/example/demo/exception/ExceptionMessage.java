@@ -28,6 +28,7 @@ public final class ExceptionMessage {
     public static final String COMPANY_NAME_IS_REQUIRED = " نام  شرکت اجباریست";
     public static final String COMPANY_ADDRESS_IS_REQUIRED = " آدرس  شرکت اجباریست";
     public static final String ABOUT_COMPANY_IS_REQUIRED = " درباره شرکت اجباریست";
+    public static final String CITY_IS_NOT_VALID = " شهر معتبر نمی باشد";
 
     //JobMessage
     public static final String JOB_TITLE_MUST_BE_FILLED = "عنوان شغلی باید پر شده باشد";
