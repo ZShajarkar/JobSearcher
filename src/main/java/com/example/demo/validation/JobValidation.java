@@ -4,6 +4,7 @@ import com.example.demo.dto.JobDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.model.Job;
 import com.example.demo.repository.JobRepository;
+import com.example.demo.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,11 +34,18 @@ public class JobValidation {
         validateUniqueJobForCompany(jobDto);
 
         skillValidation.saveSkillIfIdIsNull(jobDto.getSkills());
+        validateActiveJobsAreLessThanFive(jobDto);
     }
 
     private void validateUniqueJobForCompany(JobDto jobDto) throws ValidationException {
         List<Job> byCompanyAndJobId = this.jobRepository.findByCompanyAndJobId(jobDto.getJobTitle(), jobDto.getCompany().getId());
         if (!byCompanyAndJobId.isEmpty())
             throw new ValidationException(ExceptionMessage.JOB_HAS_BEEN_DECLARED_IN_TEN_PAST_DAYS);
+    }
+
+    private void validateActiveJobsAreLessThanFive(JobDto jobDto) throws ValidationException {
+        int countOfActiveJobForCompany = this.jobRepository.findCountOfActiveJobForCompany(jobDto.getCompany().getId());
+        if (countOfActiveJobForCompany > Constants.ALLOWABLE_NUMBER_FOR_JOBS_ARE_5_EACH_COUNTER)
+            throw new ValidationException(ExceptionMessage.MORE_THAN_TEN_JOB_HAS_BEEN_SAVED_FOR_THIS_COMPANY);
     }
 }
