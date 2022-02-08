@@ -59,7 +59,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public List<ResumeDto> getResumesByJobId(Long jobId) throws NotFoundException {
-        List<ResumeDto> resumeDtos = this.resumeMapper.toDto(resumeRepository.findByJob(jobId));
+        List<ResumeDto> resumeDtos = (List<ResumeDto>) this.resumeMapper.toDto(resumeRepository.findByJob(jobId));
         if (resumeDtos.isEmpty())
             throw new NotFoundException("رزومه ای برای این آگهی  ارسال نشده است");
         return resumeDtos;

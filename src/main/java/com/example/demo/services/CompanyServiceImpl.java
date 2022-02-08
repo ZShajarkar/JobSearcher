@@ -50,7 +50,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = signUpCompanyRequestMapper.toModel(companyDto);
         Set<Role> roles = new HashSet<>();
         Role companyRole = roleRepository.findByName(ERole.ROLE_COMPANY)
-                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                .orElseThrow(() -> new RuntimeException("Error:ROLE_COMPANY is not found."));
         roles.add(companyRole);
         company.setRoles(roles);
         Company savedCompany = companyRepository.save(company);

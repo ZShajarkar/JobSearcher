@@ -13,13 +13,15 @@ import java.util.List;
 @Component
 public class JobValidation {
     private final JobRepository jobRepository;
+    private final SkillValidation skillValidation;
 
     @Autowired
-    public JobValidation(JobRepository jobRepository) {
+    public JobValidation(JobRepository jobRepository, SkillValidation skillValidation) {
         this.jobRepository = jobRepository;
+        this.skillValidation = skillValidation;
     }
 
-    public void validateJob(JobDto jobDto) throws Exception {
+    public void validateJob(JobDto jobDto) throws ValidationException {
         Validation.notEmpty(jobDto.getJobTitle(), ExceptionMessage.JOB_TITLE_MUST_BE_FILLED);
         Validation.notEmpty(jobDto.getSkills(), ExceptionMessage.JOB_SKILLS_MUST_BE_FILLED);
         Validation.notEmpty(jobDto.getJobDescription(), ExceptionMessage.ABOUT_JOB_MUST_BE_FILLED);
@@ -29,6 +31,8 @@ public class JobValidation {
         Validation.validatePositiveNumber(jobDto.getSalary(), ExceptionMessage.SALARY_MUST_BE_POSITIVE);
 
         validateUniqueJobForCompany(jobDto);
+
+        skillValidation.saveSkillIfIdIsNull(jobDto.getSkills());
     }
 
     private void validateUniqueJobForCompany(JobDto jobDto) throws ValidationException {

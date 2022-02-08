@@ -34,20 +34,19 @@ public class JobServiceImpl implements JobService {
     public JobDto save(JobDto jobDto, String token) throws Exception {
         jobDto.setCompany(new CompanyDto(authenticationService.getIdOutOfBearerToken(token)));
         jobValidation.validateJob(jobDto);
-        Job savedJob = this.jobRepository.save(this.jobMapper.toModel(jobDto));
+        Job job = this.jobMapper.toModel(jobDto);
+        Job savedJob = this.jobRepository.save(job);
         return this.jobMapper.toDto(savedJob);
     }
 
     public List<JobDto> findByJobTitleAndCity(String jobTitle, String city) {
         List<Job> jobsByJobTitle = this.jobRepository.findByJobTitleAndCity(jobTitle, city);
-        return this.jobMapper.toDto(jobsByJobTitle);
+        return (List<JobDto>) this.jobMapper.toDto(jobsByJobTitle);
     }
 
     @Scheduled(cron = Constants.EVERY_DAY)
-    // @Scheduled(cron = "*/10 * * * * *")
     public void deleteAfterTenDays() {
         LocalDate tenDaysAgo = LocalDate.now().minusDays(10);
-        // localDate.minusDays(0);
-        this.jobRepository.deleteAfterTenDays(tenDaysAgo);
+        this.jobRepository.deleteAfterDays(tenDaysAgo);
     }
 }

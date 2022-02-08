@@ -32,7 +32,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Modifying
     @Query(
             "UPDATE Job job set job.deleted=true where job.registeredDate=:date")
-    void deleteAfterTenDays(@Param("date") LocalDate days
+    void deleteAfterDays(@Param("date") LocalDate days
     );
 
 

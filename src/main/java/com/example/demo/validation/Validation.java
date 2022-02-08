@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.xml.bind.ValidationException;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.regex.Pattern;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -24,10 +24,11 @@ public final class Validation {
             throw new ValidationException(message);
     }
 
-    public static void notEmpty(List<?> inout, String message) throws ValidationException {
+    public static void notEmpty(Collection<?> inout, String message) throws ValidationException {
         if (inout.isEmpty())
             throw new ValidationException(message);
     }
+
 
     public static void checkComplicatePassword(String text) throws ValidationException {
         if (!text.matches(Constants.STRONG_PASSWORD_PATTERN))
@@ -41,17 +42,19 @@ public final class Validation {
             throw new ValidationException(ExceptionMessage.EMAIL_IS_NOT_VALID);
     }
 
-    public static void notNull(Object input, String message) throws Exception {
+    public static void notNull(Object input, String message) throws ValidationException {
         if (input == null)
-            throw new Exception(message);
+            throw new ValidationException(message);
     }
-    public static void validatePositiveNumber(BigInteger number,String message) throws Exception {
-        if (number.compareTo(BigInteger.valueOf(0))<0)
-            throw new Exception(message);
+
+    public static void validatePositiveNumber(BigInteger number, String message) throws ValidationException {
+        if (number.compareTo(BigInteger.valueOf(0)) < 0)
+            throw new ValidationException(message);
     }
+
     public static void validateIfPersian(String input, String message) throws ValidationException {
         if (!Pattern.compile(Constants.JUST_PERSIAN_PATTERN)
-                .matcher(input.trim().replaceAll(" ", ""))
+                .matcher(input.trim().replace(" ", ""))
                 .matches())
             throw new ValidationException(message);
     }

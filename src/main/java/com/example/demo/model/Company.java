@@ -12,12 +12,12 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "Company", uniqueConstraints = {@UniqueConstraint(columnNames = {"companyName", "city"})})
+@Table(name = "Company", uniqueConstraints = {@UniqueConstraint(columnNames = {"company_name", "city"})})
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 45,name = "company_name")
     private String companyName;
     @Column(nullable = false, length = 64)
     private String city;

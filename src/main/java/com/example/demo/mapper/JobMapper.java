@@ -1,17 +1,24 @@
 package com.example.demo.mapper;
 
 import com.example.demo.dto.JobDto;
+import com.example.demo.dto.SkillDto;
 import com.example.demo.model.Job;
+import com.example.demo.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class JobMapper implements DtoToModelMapper<JobDto, Job> {
     private final CompanyMapper companyMapper;
+    private final SkillMapper skillMapper;
 
     @Autowired
-    public JobMapper(CompanyMapper companyMapper) {
+    public JobMapper(CompanyMapper companyMapper, SkillMapper skillMapper) {
         this.companyMapper = companyMapper;
+        this.skillMapper = skillMapper;
     }
 
     @Override
@@ -25,8 +32,9 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         job.setJobDescription(dto.getJobDescription());
         job.setJobTitle(dto.getJobTitle());
         job.setSalary(dto.getSalary());
-        job.setSkills(dto.getSkills());
         job.setCompany(this.companyMapper.toModel(dto.getCompany()));
+        Set<Skill> skills = new HashSet<>(this.skillMapper.toModel(dto.getSkills()));
+        job.setSkills(skills);
         job.setRegisteredDate(dto.getRegisteredDate());
         job.setDeleted(dto.isDeleted());
         return job;
@@ -43,8 +51,9 @@ public class JobMapper implements DtoToModelMapper<JobDto, Job> {
         jobDto.setJobDescription(jobModel.getJobDescription());
         jobDto.setJobTitle(jobModel.getJobTitle());
         jobDto.setSalary(jobModel.getSalary());
-        jobDto.setSkills(jobModel.getSkills());
         jobDto.setCompany(this.companyMapper.toDto(jobModel.getCompany()));
+        Set<SkillDto> skillDtoSet = new HashSet<>(this.skillMapper.toDto(jobModel.getSkills()));
+        jobDto.setSkills(skillDtoSet);
         jobDto.setRegisteredDate(jobModel.getRegisteredDate());
         jobDto.setDeleted(jobModel.isDeleted());
         return jobDto;

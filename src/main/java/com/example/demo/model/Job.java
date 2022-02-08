@@ -10,7 +10,6 @@ import javax.validation.constraints.Min;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -30,9 +29,11 @@ public class Job {
     private BigInteger Salary;
     @Column(nullable = false, length = 100)
     private String jobDescription;
-    @ElementCollection
-    @Column(nullable = false, length = 100)
-    private List<String> skills;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "job_skills",
+            joinColumns = @JoinColumn(name = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id"))
+    private Set<Skill> skills = new HashSet<>();
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Resume> resumes = new HashSet<>();
 

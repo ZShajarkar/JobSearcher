@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "تستی امروز",
+  "companyName": "تستی لامروز",
   "city": "تهران",
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "sarashahbazi@yahoo.com",
+  "email": "sarashahbazi2@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,15 +23,24 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlAeWFob28uY29tQGNvbXBhbnkiLCJpYXQiOjE2NDQwODAzNjksImV4cCI6MTY0NDE2Njc2OX0.rLe1jNkh5YYTOOrVm6Vp2dlKs4QV_ZtcMzpI99Owc3tAtJU4PT2o60X2g5-IJ9JKY-lw_pxNb23-5DMLA3OE3g
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlAeWFob28uY29tQGNvbXBhbnkiLCJpYXQiOjE2NDQzMjIxMDMsImV4cCI6MTY0NDQwODUwM30.r6Zh-Tc_RqN0dWNo6wISyCJxbmm2EA90s_97wuw2bAbOOHD1ijOqjOyKzSbYaRFmjkiTZoxREZkI0rr8b12LEg
 Content-Type: application/json
 
 {
-  "jobTitle": "ص2ی برناسسسمه نوسسسیس",
+  "jobTitle": "2mmسبرsسیینااddظsمdهdhhdsj نویسss",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
-  "skills": ["java","spring"]
+  "skills": [
+    {
+      "id": null,
+      "name": "جاوا"
+    },
+    {
+      "id": null,
+      "name": "hi"
+    }
+  ]
 }
 
 ### ثبت نام آگهی --------------------------------------------------------------------
@@ -75,7 +84,8 @@ Content-Type: application/json
   "email": "zshajadfsrkar@yahoo.com",
   "password": "sSSssd78@5*"
 }
-### login user
+
+### ورود کارجو
 
 POST http://localhost:8084/public/company/v1/sign-in
 Content-Type: application/json
@@ -85,8 +95,10 @@ Content-Type: application/json
   "password": "sSSssd78@5*"
 }
 
-### login company
+### ورود شرکت
+GET http://localhost:8084/public/skill/v1
 
+### گرفتن لیست مهارت های ثبت شده
 
 
 
