@@ -36,7 +36,7 @@ Content-Type: application/json
 
 ### ثبت نام آگهی --------------------------------------------------------------------
 ### پیش نیاز ثبت آگهی ثبت شرکت است ---------------------------------------------------
-POST http://localhost:8084/public/user/process_register
+POST http://localhost:8084/public/user/v1/process_register
 Content-Type: application/json
 
 {
@@ -68,7 +68,7 @@ Content-Disposition: form-data; name="file"; filename="test.jpg""< "\D:\data\tes
 GET http://localhost:8084/files
 
 ### دانلود رزومه ها
-POST http://localhost:8084/public/user/sign_in
+POST http://localhost:8084/public/user/v1/sign_in
 Content-Type: application/json
 
 {
