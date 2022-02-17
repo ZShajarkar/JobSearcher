@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "تستی  تستلامروستز",
-  "city": 28,
+  "companyName": "زینب",
+  "city": 27,
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "sarashahbazibnddwbs2@yahoo.com",
+  "email": "zshajarkar2@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,11 +23,11 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYXJhc2hhaGJhemlibmRkYnMyQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ0MzQ4MDQzLCJleHAiOjE2NDQ0MzQ0NDN9.Z5q228cLEmzDTnr76sYDG3GRbx0UQETRP4PRsYzoY3ItUyszwObunnUoelCNSVpSU-xWUBJBdfHH-cYpCybDcQ
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTEyOTIxMSwiZXhwIjoxNjQ1MjE1NjExfQ.svjg1Aj-EUsVVZ0NE1mhEiTlwmYZqmzha12ZeOtDZwQ9hkcHAr8PXMh46pGAR9h2jtH_Qhg8HgBdQz7IULMypg
 Content-Type: application/json
 
 {
-  "jobTitle": "2mmسبرsسیینaassaaااddsظsمdهdhhdsj نویسss",
+  "jobTitle": "بنا",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
@@ -49,7 +49,7 @@ POST http://localhost:8084/public/user/v1/process_register
 Content-Type: application/json
 
 {
-  "email": "sarashajarkhhar@yahoo.com",
+  "email": "zshajarkar@yahoo.com",
   "password": "sSSssd78@5*",
   "firstName": "زینب",
   "lastName": "شجرکار       ",
@@ -81,7 +81,7 @@ POST http://localhost:8084/public/user/v1/sign_in
 Content-Type: application/json
 
 {
-  "email": "zshajadfsrkar@yahoo.com",
+  "email": "zshajarkar@yahoo.com",
   "password": "sSSssd78@5*"
 }
 
@@ -91,7 +91,7 @@ POST http://localhost:8084/public/company/v1/sign-in
 Content-Type: application/json
 
 {
-  "email": "sarashahbazibnddbs2@yahoo.com",
+  "email": "zshajarkar2@yahoo.com",
   "password": "sSSssd78@5*"
 }
 

@@ -23,7 +23,7 @@ public final class ExceptionMessage {
     public static final String LAST_NAME_MUST_BE_LETTER = " نام  خانوادگی می بایست فقط شامل حروف فارسی باشد";
 
     //CompanyMessage
-    public static final String COMPANY_AND_NAME_HAVE_BEEN_REGISTERED = "این شرکت در این شهر قبلا ثبت شده است";
+    public static final String COMPANY_AND_CITY_HAVE_BEEN_REGISTERED = "این شرکت در این شهر قبلا ثبت شده است";
     public static final String COMPANY_NAME_MUST_BE_LETTER = " نام  شرکت می بایست فقط شامل حروف فارسی باشد";
     public static final String COMPANY_NAME_IS_REQUIRED = " نام  شرکت اجباریست";
     public static final String COMPANY_ADDRESS_IS_REQUIRED = " آدرس  شرکت اجباریست";
@@ -43,4 +43,5 @@ public final class ExceptionMessage {
     public static final String YOU_HAVE_BEEN_SENT_RESUME = "شما قبلا برای این موقعیت شغلی رزومه ارسال کرده اید";
     public static final String RESUME_UPLOADED_SUCCESSFULLY = "رزومه با موفقیت ارسال شد";
     public static final String FILE_COULD_NOT_UPLOAD = "فایل اپلود نشد";
+    public static final String NO_RESUME_HAS_BEEN_UPLOADED_FOR_THIS_JOB="رزومه ای برای این آگهی  ارسال نشده است";
 }

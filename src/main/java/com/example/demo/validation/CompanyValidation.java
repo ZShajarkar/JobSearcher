@@ -38,7 +38,7 @@ public class CompanyValidation {
 
     private void validateUniqueCompanyAndCity(String company, int city) throws ValidationException {
         if (companyRepository.findByCompanyAndCity(company, city) != null)
-            throw new ValidationException(ExceptionMessage.CITY_IS_NOT_VALID);
+            throw new ValidationException(ExceptionMessage.COMPANY_AND_CITY_HAVE_BEEN_REGISTERED);
     }
 
     private void validateCity(int city) throws ValidationException {
