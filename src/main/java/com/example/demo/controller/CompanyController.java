@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CompanyDto;
 import com.example.demo.dto.LoginRequestDto;
 import com.example.demo.dto.SignUpCompanyRequestDto;
 import com.example.demo.services.CompanyService;
@@ -30,10 +29,11 @@ public class CompanyController {
             return ResponseFactory.badRequest(e.getMessage());
         }
     }
-    @PostMapping(path = "sign-in",consumes = "application/json", produces = "application/json")
+
+    @PostMapping(path = "sign-in", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> processRegistration(@Valid @RequestBody LoginRequestDto loginRequestDto) {
         try {
-            return ResponseFactory.ok(companyService.authenticateUser(loginRequestDto));
+            return ResponseFactory.ok(companyService.authenticateCompany(loginRequestDto));
         } catch (Exception e) {
             return ResponseFactory.badRequest(e.getMessage());
         }

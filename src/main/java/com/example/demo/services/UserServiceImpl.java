@@ -1,10 +1,8 @@
 package com.example.demo.services;
 
-import com.example.demo.dto.JwtResponseDto;
-import com.example.demo.dto.LoginRequestDto;
-import com.example.demo.dto.SignUpUserRequestDto;
-import com.example.demo.dto.SignUpUserResponseDto;
+import com.example.demo.dto.*;
 import com.example.demo.enums.ERole;
+import com.example.demo.mapper.MainUserInfoMapper;
 import com.example.demo.mapper.SignUpUserRequestMapper;
 import com.example.demo.mapper.SignUpUserResponseMapper;
 import com.example.demo.model.Role;
@@ -17,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -28,9 +27,10 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final SignUpUserResponseMapper signUpUserResponseMapper;
     private final AuthenticationService authenticationService;
+    private final MainUserInfoMapper mainUserInfoMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, SignUpUserRequestMapper dtoToModelMapper, UserValidation userValidation, PasswordEncoder encoder, RoleRepository roleRepository, SignUpUserResponseMapper signUpUserResponseMapper, AuthenticationService authenticationService) {
+    public UserServiceImpl(UserRepository userRepository, SignUpUserRequestMapper dtoToModelMapper, UserValidation userValidation, PasswordEncoder encoder, RoleRepository roleRepository, SignUpUserResponseMapper signUpUserResponseMapper, AuthenticationService authenticationService, MainUserInfoMapper mainUserInfoMapper) {
         this.userRepository = userRepository;
         this.dtoToModelMapper = dtoToModelMapper;
         this.userValidation = userValidation;
@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
         this.signUpUserResponseMapper = signUpUserResponseMapper;
         this.authenticationService = authenticationService;
+        this.mainUserInfoMapper = mainUserInfoMapper;
     }
-
 
     public SignUpUserResponseDto save(SignUpUserRequestDto userDto) throws Exception {
         userValidation.validateUser(userDto);
@@ -52,6 +52,12 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
         User savedUser = userRepository.save(user);
         return signUpUserResponseMapper.toDto(savedUser);
+    }
+
+    public List<MainUserInfoDto> getUsersSentResume(Long jobId, String token) throws Exception {
+        userValidation.validateCompanyAccess(token,jobId);
+        List<User> usersWhoSentResume = userRepository.findByJobId(jobId);
+        return (List<MainUserInfoDto>) mainUserInfoMapper.toDto(usersWhoSentResume);
     }
 
     public JwtResponseDto authenticateUser(LoginRequestDto loginRequestDto) {

@@ -58,7 +58,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
 
-    public JwtResponseDto authenticateUser(LoginRequestDto loginRequestDto) {
+    public JwtResponseDto authenticateCompany(LoginRequestDto loginRequestDto) {
         loginRequestDto.setEmail(loginRequestDto.getEmail().concat("@company"));
         return authenticationService.authenticate(loginRequestDto);
     }

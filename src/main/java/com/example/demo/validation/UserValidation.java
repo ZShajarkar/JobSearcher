@@ -1,22 +1,29 @@
 package com.example.demo.validation;
 
+import com.example.demo.dto.JobsForEachCompanyDto;
 import com.example.demo.dto.SignUpUserRequestDto;
-import com.example.demo.dto.UserDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.xml.bind.ValidationException;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Component
 public class UserValidation {
     private final UserRepository userRepository;
+    private final JobService jobService;
 
     @Autowired
-    public UserValidation(UserRepository userRepository) {
+    public UserValidation(UserRepository userRepository, JobService jobService) {
         this.userRepository = userRepository;
+        this.jobService = jobService;
     }
 
-    public void validateUser(SignUpUserRequestDto userInfo) throws Exception {
+    public void validateUser(SignUpUserRequestDto userInfo) throws ValidationException {
         Validation.notEmpty(userInfo.getFirstName(), ExceptionMessage.FIRST_NAME_MUST_BE_FILLED);
         Validation.notEmpty(userInfo.getLastName(), ExceptionMessage.LAST_NAME_MUST_BE_FILLED);
         Validation.notEmpty(userInfo.getEmail(), ExceptionMessage.EMAIL_MUST_BE_FILLED);
@@ -39,14 +46,15 @@ public class UserValidation {
         Validation.validateIfPersian(userInfo.getLastName(), ExceptionMessage.LAST_NAME_MUST_BE_LETTER);
     }
 
-    private void checkUniqueEmail(String email) throws Exception {
-        if (userRepository.findByEmail(email) != null)
-            throw new Exception(ExceptionMessage.EMAIL_HAS_BEEN_REGISTERED);
+    public void validateCompanyAccess(String token, Long jobID) throws ValidationException {
+        Stream<Long> longStream = jobService.findJobsByCompanyId(token).stream().map(JobsForEachCompanyDto::getId);
+        if (longStream.noneMatch(item -> Objects.equals(item, jobID)))
+            throw new ValidationException(ExceptionMessage.YOU_DONT_HAVE_ACCESS_TO_THIS_JOB);
     }
 
-    private void checkValidLength(String email) throws Exception {
+    private void checkUniqueEmail(String email) throws ValidationException {
         if (userRepository.findByEmail(email) != null)
-            throw new Exception(ExceptionMessage.EMAIL_HAS_BEEN_REGISTERED);
+            throw new ValidationException(ExceptionMessage.EMAIL_HAS_BEEN_REGISTERED);
     }
 
 

@@ -13,6 +13,7 @@ public final class ExceptionMessage {
     public static final String PASSWORD_IS_NOT_STRONG = "رمز عبور قوی نیست!رمزعبور قویتری انتخاب کنید";
     public static final String EMAIL_IS_NOT_VALID = "ایمیل معتبر نیست";
     public static final String EMAIL_HAS_BEEN_REGISTERED = "ایمیل از قبل ثبت شده است";
+    public static final String YOU_DONT_HAVE_ACCESS_TO_THIS_JOB = "شما به این شغل ذسترسی ندارید";
     public static final String FIRST_NAME_MUST_BE_FILLED = "نام باید پر شده باشد";
     public static final String FIRST_NAME_MUST_BE_BETWEEN_2_AND_20 = "طول نام  می بایست بین 2 و 20 باشد";
     public static final String FIRST_NAME_MUST_BE_LETTER = " نام می بایست فقط شامل حروف فارسی  باشد";
@@ -44,4 +45,5 @@ public final class ExceptionMessage {
     public static final String RESUME_UPLOADED_SUCCESSFULLY = "رزومه با موفقیت ارسال شد";
     public static final String FILE_COULD_NOT_UPLOAD = "فایل اپلود نشد";
     public static final String NO_RESUME_HAS_BEEN_UPLOADED_FOR_THIS_JOB="رزومه ای برای این آگهی  ارسال نشده است";
+    public static final String FILE_MUST_BE_IN_PDF="نوع فایل می بایست پی دی اف باشد";
 }

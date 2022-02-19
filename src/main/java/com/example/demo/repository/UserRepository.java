@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     @Query(
@@ -14,5 +16,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(
             @Param("email") String email
     );
+
     Boolean existsByEmail(String email);
+
+    @Query(
+            "select u from User u inner join Resume resume on u.id=resume.user.id where resume.job.id=:jobId"
+    )
+   List<User> findByJobId(
+            @Param("jobId") Long jobId
+    );
+
 }

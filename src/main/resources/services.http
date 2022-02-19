@@ -23,7 +23,7 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTEyOTIxMSwiZXhwIjoxNjQ1MjE1NjExfQ.svjg1Aj-EUsVVZ0NE1mhEiTlwmYZqmzha12ZeOtDZwQ9hkcHAr8PXMh46pGAR9h2jtH_Qhg8HgBdQz7IULMypg
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
 Content-Type: application/json
 
 {
@@ -49,9 +49,9 @@ POST http://localhost:8084/public/user/v1/process_register
 Content-Type: application/json
 
 {
-  "email": "zshajarkar@yahoo.com",
+  "email": "abdolVahab@yahoo.com",
   "password": "sSSssd78@5*",
-  "firstName": "زینب",
+  "firstName": "عبدال وهاب",
   "lastName": "شجرکار       ",
   "confirmedPassword": "sSSssd78@5*"
 }
@@ -64,7 +64,7 @@ GET http://localhost:8084/public/job/v1?city=29
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
 POST http://localhost:8084/public/resume/v1/job/7
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFkZnNya2FyQHlhaG9vLmNvbSIsImlhdCI6MTY0NDA4NDg5OCwiZXhwIjoxNjQ0MTcxMjk4fQ.VZrOiEL3jUW94yK8L8GUNyxEBVg44H_4NkeQxKNfUOCKhRcCWFrAyHZxcXPSWsv03NQpmH9-BfWC_HhB2XsDew
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyQHlhaG9vLmNvbSIsImlhdCI6MTY0NTI4OTY0MSwiZXhwIjoxNjQ1Mzc2MDQxfQ.SQYG8wcmPrRLHQfi-viuQZZkUDW-PXcA2csrmOsW7MeaoopWRlQ8Wnh5Icmafh5eo3eSPaLmcL5ZtQbGEnvcsA
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
@@ -74,14 +74,11 @@ Content-Disposition: form-data; name="file"; filename="test.jpg""< "\D:\data\tes
 
 ### آپلود رزومه -نیاز به header دارد
 
-GET http://localhost:8084/files
-
-### دانلود رزومه ها
 POST http://localhost:8084/public/user/v1/sign_in
 Content-Type: application/json
 
 {
-  "email": "zshajarkar@yahoo.com",
+  "email": "abdolVahab@yahoo.com",
   "password": "sSSssd78@5*"
 }
 
@@ -100,5 +97,17 @@ GET http://localhost:8084/public/skill/v1
 
 ### گرفتن لیست مهارت های ثبت شده
 
+GET http://localhost:8084/public/job/v1/companyId
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
 
+### گرفتن لیست شغل ثبت شده هر کمپانی
 
+GET http://localhost:8084/public/user/v1/jobId/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
+
+### گرفتن لیست کاربرانی که برای ایند شغل رزومه ارسال کرده اند
+
+GET http://localhost:8084/public/resume/v1/files/job/1/user-id/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
+
+### دانلود رزومه

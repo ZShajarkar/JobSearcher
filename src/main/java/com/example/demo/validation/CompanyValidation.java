@@ -3,6 +3,7 @@ package com.example.demo.validation;
 import com.example.demo.dto.SignUpCompanyRequestDto;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.repository.CompanyRepository;
+import com.example.demo.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +12,12 @@ import javax.xml.bind.ValidationException;
 @Component
 public class CompanyValidation {
     private final CompanyRepository companyRepository;
+    private final AuthenticationService authenticationService;
 
     @Autowired
-    public CompanyValidation(CompanyRepository companyRepository) {
+    public CompanyValidation(CompanyRepository companyRepository, AuthenticationService authenticationService) {
         this.companyRepository = companyRepository;
+        this.authenticationService = authenticationService;
     }
 
     public void validate(SignUpCompanyRequestDto companyDto) throws ValidationException {
@@ -34,6 +37,10 @@ public class CompanyValidation {
         Validation.checkComplicatePassword(companyDto.getPassword());
         Validation.notEqual(companyDto.getConfirmPassword(), companyDto.getPassword(), ExceptionMessage.PASSWORD_DOESNT_MATCH);
         validateCity(companyDto.getCity());
+    }
+
+    private void validateCompanyAndJob(String token, Long jobId) throws ValidationException {
+        authenticationService.getIdOutOfBearerToken(token);
     }
 
     private void validateUniqueCompanyAndCity(String company, int city) throws ValidationException {

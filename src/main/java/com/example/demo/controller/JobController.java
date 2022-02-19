@@ -38,4 +38,14 @@ public class JobController {
             return ResponseFactory.badRequest(exception.getMessage());
         }
     }
+
+    @GetMapping(path = "/companyId", produces = "application/json")
+    @PreAuthorize("hasRole('COMPANY')")
+    public ResponseEntity<?> findByCompanyId(@RequestHeader("Authorization") String token) {
+        try {
+            return ResponseFactory.ok(this.jobService.findJobsByCompanyId(token));
+        } catch (Exception exception) {
+            return ResponseFactory.badRequest(exception.getMessage());
+        }
+    }
 }

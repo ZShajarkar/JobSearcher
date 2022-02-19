@@ -32,6 +32,10 @@ public interface JobRepository extends JpaRepository<Job, Long> {
             "select count(job) from Job job where job.company.id=:companyId and job.deleted=false ")
     int findCountOfActiveJobForCompany(@Param("companyId") Long companyId);
 
+    @Query(
+            "select job from Job job where  job.company.id=:companyId and job.deleted=false  ")
+    List<Job> findByCompanyId(@Param("companyId") Long companyId);
+
     @Transactional
     @Modifying
     @Query(
