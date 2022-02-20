@@ -31,7 +31,7 @@ public class JobController {
     }
 
     @GetMapping(produces = "application/json")
-    public ResponseEntity<?> findByJobTitleAndCity(@RequestParam(value = "jobTitle", required = false) String jobTitle, @RequestParam(value = "city", required = false) int city) {
+    public ResponseEntity<?> findByJobTitleAndCity(@RequestParam(value = "jobTitle", required = false) String jobTitle, @RequestParam(value = "city", required = false) Integer city) {
         try {
             return ResponseFactory.ok(this.jobService.findByJobTitleAndCity(jobTitle, city));
         } catch (Exception exception) {
