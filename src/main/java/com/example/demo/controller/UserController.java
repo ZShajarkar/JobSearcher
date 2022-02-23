@@ -18,12 +18,9 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserService userService;
-    private final JobService jobService;
-
     @Autowired
-    public UserController(UserService userService, JobService jobService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.jobService = jobService;
     }
 
     @PostMapping(path = "/process_register", consumes = "application/json", produces = "application/json")

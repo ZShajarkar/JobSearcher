@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Mapper
-public interface DtoToModelMapper<D, M> {
+public interface DtoToModelAndModelToDtoMapper<D, M> {
     M toModel(D dto);
 
     default Collection<M> toModel(Collection<D> dtoList) {
@@ -14,4 +14,15 @@ public interface DtoToModelMapper<D, M> {
         }
         return models;
     }
+
+    D toDto(M vm);
+
+    default Collection<D> toDto(Collection<M> models) {
+        Collection<D> dtoList = new ArrayList<>(models.size());
+        for (M vm : models) {
+            dtoList.add(toDto(vm));
+        }
+        return dtoList;
+    }
 }
+

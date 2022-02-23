@@ -2,9 +2,8 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.SignUpCompanyRequestDto;
 import com.example.demo.model.Company;
-import org.springframework.stereotype.Component;
 
-@Component
+@Mapper
 public class SignUpCompanyRequestMapper implements DtoToModelMapper<SignUpCompanyRequestDto, Company> {
     @Override
     public Company toModel(SignUpCompanyRequestDto dto) {
@@ -19,10 +18,5 @@ public class SignUpCompanyRequestMapper implements DtoToModelMapper<SignUpCompan
         company.setCompanyName(dto.getCompanyName());
         company.setAddress(dto.getAddress());
         return company;
-    }
-
-    @Override
-    public SignUpCompanyRequestDto toDto(Company vm) {
-        return null;
     }
 }

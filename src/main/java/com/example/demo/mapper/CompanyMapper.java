@@ -2,10 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.CompanyDto;
 import com.example.demo.model.Company;
-import org.springframework.stereotype.Component;
 
-@Component
-public class CompanyMapper implements DtoToModelMapper<CompanyDto, Company> {
+@Mapper
+public class CompanyMapper implements DtoToModelAndModelToDtoMapper<CompanyDto, Company> {
     @Override
     public Company toModel(CompanyDto dto) {
         if (dto == null) {

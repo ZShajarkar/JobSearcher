@@ -2,10 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.JobsForEachCompanyDto;
 import com.example.demo.model.Job;
-import org.springframework.stereotype.Component;
 
-@Component
-public class JobsForEachCompanyMapper implements DtoToModelMapper<JobsForEachCompanyDto, Job> {
+@Mapper
+public class JobsForEachCompanyMapper implements DtoToModelAndModelToDtoMapper<JobsForEachCompanyDto, Job> {
 
 
     @Override

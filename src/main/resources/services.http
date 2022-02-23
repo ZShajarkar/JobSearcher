@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "زینب",
+  "companyName": "ازینب",
   "city": 27,
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "zshajarkar2@yahoo.com",
+  "email": "zshajarkar22@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,11 +23,11 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwNzM2MCwiZXhwIjoxNjQ1NjkzNzYwfQ.xd75QiLeHwdKlBWNsnVGVOHWEG-38FbJ2s5dfKRa3hCUiszdqG6uOgPHLES_ax2AYmvbsimFz80VcV2zZ8Lqaw
 Content-Type: application/json
 
 {
-  "jobTitle": "بنا",
+  "jobTitle": "ییبنا",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
@@ -57,18 +57,18 @@ Content-Type: application/json
 }
 
 ### ثبت نام کاربر ----------------------------------------------------------------------
-GET http://localhost:8084/public/job/v1
+GET http://localhost:8084/public/job/v1?jobTitle=بنا
 
 ### جستجو شغل ----------------------------------------------------------------------
 
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
 POST http://localhost:8084/public/resume/v1/job/7
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyQHlhaG9vLmNvbSIsImlhdCI6MTY0NTI4OTY0MSwiZXhwIjoxNjQ1Mzc2MDQxfQ.SQYG8wcmPrRLHQfi-viuQZZkUDW-PXcA2csrmOsW7MeaoopWRlQ8Wnh5Icmafh5eo3eSPaLmcL5ZtQbGEnvcsA
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmRvbFZhaGFiQHlhaG9vLmNvbSIsImlhdCI6MTY0NTYwNzQ5MSwiZXhwIjoxNjQ1NjkzODkxfQ.pWNwLaJLBqXqv68hK_3jvm1LXtVW2oxOCeYzx--84DJ3CmTM5dKyTaA5MigTlUR-LCSNw_H_tdJAb5eupDaL5Q
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
-Content-Disposition: form-data; name="file"; filename="test.jpg""< "\D:\data\test.jpg"
+Content-Disposition: form-data; name="file"; filename="قثسعئث.pdf""< "\D:\data\قثسعئث.pdf"
 
 --requestBody--
 
@@ -98,16 +98,15 @@ GET http://localhost:8084/public/skill/v1
 ### گرفتن لیست مهارت های ثبت شده
 
 GET http://localhost:8084/public/job/v1/companyId
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
 
 ### گرفتن لیست شغل ثبت شده هر کمپانی
 
-GET http://localhost:8084/public/user/v1/jobId/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
-
+GET http://localhost:8084/public/user/v1/jobId/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
 ### گرفتن لیست کاربرانی که برای ایند شغل رزومه ارسال کرده اند
 
-GET http://localhost:8084/public/resume/v1/files/job/1/user-id/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTI4NzIwMCwiZXhwIjoxNjQ1MzczNjAwfQ.Nid7kcKyMKNq4vfXL_FxmRF_HaOk1HNIj-PTxoyRE8KYfQdMXNJgzIBDBqBTBlIb5WBo9j6M1v2C1ljOdqh-PQ
+GET http://localhost:8084/public/resume/v1/files/job/2/user-id/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
 
 ### دانلود رزومه

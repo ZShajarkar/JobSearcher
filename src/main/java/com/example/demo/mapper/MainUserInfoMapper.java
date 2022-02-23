@@ -2,10 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.MainUserInfoDto;
 import com.example.demo.model.User;
-import org.springframework.stereotype.Component;
 
-@Component
-public class MainUserInfoMapper implements DtoToModelMapper<MainUserInfoDto, User> {
+@Mapper
+public class MainUserInfoMapper implements DtoToModelAndModelToDtoMapper<MainUserInfoDto, User> {
     @Override
     public User toModel(MainUserInfoDto dto) {
         if (dto == null) {

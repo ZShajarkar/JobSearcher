@@ -4,10 +4,9 @@ import com.example.demo.dto.SignUpCompanyResponseDto;
 import com.example.demo.model.Company;
 import com.example.demo.services.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
-public class CompanyResponseMapper implements DtoToModelMapper<SignUpCompanyResponseDto, Company> {
+@Mapper
+public class CompanyResponseMapper implements DtoToModelAndModelToDtoMapper<SignUpCompanyResponseDto, Company> {
     private final ProvinceService provinceService;
 
     @Autowired

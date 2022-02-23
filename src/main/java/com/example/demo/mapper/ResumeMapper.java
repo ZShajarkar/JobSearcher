@@ -3,10 +3,9 @@ package com.example.demo.mapper;
 import com.example.demo.dto.ResumeDto;
 import com.example.demo.model.Resume;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
-public class ResumeMapper implements DtoToModelMapper<ResumeDto, Resume> {
+@Mapper
+public class ResumeMapper implements DtoToModelAndModelToDtoMapper<ResumeDto, Resume> {
     private final UserMapper userMapper;
     private final JobMapper jobMapper;
 

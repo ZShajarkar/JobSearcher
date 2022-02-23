@@ -2,10 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.SkillDto;
 import com.example.demo.model.Skill;
-import org.springframework.stereotype.Component;
 
-@Component
-public class SkillMapper implements DtoToModelMapper<SkillDto, Skill> {
+@Mapper
+public class SkillMapper implements DtoToModelAndModelToDtoMapper<SkillDto, Skill> {
     @Override
     public Skill toModel(SkillDto dto) {
         if (dto == null) {

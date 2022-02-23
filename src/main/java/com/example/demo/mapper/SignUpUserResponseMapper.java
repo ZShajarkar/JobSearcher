@@ -2,15 +2,9 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.SignUpUserResponseDto;
 import com.example.demo.model.User;
-import org.springframework.stereotype.Component;
 
-@Component
-public class SignUpUserResponseMapper implements DtoToModelMapper<SignUpUserResponseDto, User> {
-    @Override
-    public User toModel(SignUpUserResponseDto dto) {
-        return null;
-    }
-
+@Mapper
+public class SignUpUserResponseMapper implements ModelToDtoMapper<SignUpUserResponseDto, User> {
     @Override
     public SignUpUserResponseDto toDto(User userModel) {
         if (userModel == null) {
