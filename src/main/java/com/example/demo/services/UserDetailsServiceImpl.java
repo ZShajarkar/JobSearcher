@@ -42,5 +42,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Company Not Found with username: " + username);
         return UserDetailsImpl.build(user);
     }
-    //TODO This part , I can manage token of job, don't forget it
 }

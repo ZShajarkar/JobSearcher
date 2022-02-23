@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.dto.*;
 import com.example.demo.enums.ERole;
+import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.mapper.MainUserInfoMapper;
 import com.example.demo.mapper.SignUpUserRequestMapper;
 import com.example.demo.mapper.SignUpUserResponseMapper;
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
         User user = dtoToModelMapper.toModel(userDto);
         Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                .orElseThrow(() -> new RuntimeException(ExceptionMessage.ROLE_IS_NOT_FOUND));
         roles.add(userRole);
         user.setRoles(roles);
         User savedUser = userRepository.save(user);

@@ -29,9 +29,8 @@ public class ResumeValidation {
 
     private void validateTypeOfFile(MultipartFile file) throws ValidationException {
         String contentType = file.getContentType();
-        if (contentType == null) {
+        if (contentType == null || !contentType.toLowerCase().endsWith("pdf".toLowerCase())) {
             throw new ValidationException(ExceptionMessage.FILE_MUST_BE_IN_PDF);
-        } else if (!contentType.toLowerCase().endsWith("pdf".toLowerCase()))
-            throw new ValidationException(ExceptionMessage.FILE_MUST_BE_IN_PDF);
+        }
     }
 }

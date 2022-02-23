@@ -8,6 +8,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import java.net.URI;
 
 public class ResponseFactory {
+    private ResponseFactory() {
+    }
 
     public static <T> ResponseEntity<RestResponse<T>> ok(T result, String message) {
         RestResponse<T> response = new RestResponse<>();
@@ -75,19 +77,13 @@ public class ResponseFactory {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
 
-    //todo standardize exceptions
     public static ResponseEntity<?> handle(HttpClientErrorException e) {
-        switch (e.getStatusCode().value()) {
-            case 204:
-                return noContent(e.getMessage());
-            case 400:
-                return badRequest(e.getMessage());
-            case 404:
-                return notFound(e.getMessage());
-            case 409:
-                return conflict(e.getMessage());
-            default:
-                return internalServerError(e.getMessage());
-        }
+        return switch (e.getStatusCode().value()) {
+            case 204 -> noContent(e.getMessage());
+            case 400 -> badRequest(e.getMessage());
+            case 404 -> notFound(e.getMessage());
+            case 409 -> conflict(e.getMessage());
+            default -> internalServerError(e.getMessage());
+        };
     }
 }

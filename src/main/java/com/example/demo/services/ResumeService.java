@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ResumeService {
-    Resume store(long jobId, MultipartFile file, String token) throws IOException, ValidationException;
+    Resume save(long jobId, MultipartFile file, String token) throws IOException, ValidationException;
 
     List<ResumeDto> getResumesByJobId(Long jobId) throws NotFoundException;
 

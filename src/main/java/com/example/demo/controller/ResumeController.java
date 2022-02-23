@@ -36,7 +36,7 @@ public class ResumeController {
             @RequestHeader("Authorization") String token,
             @RequestParam("file") MultipartFile file) {
         try {
-            storageService.store(jobId, file, token);
+            storageService.save(jobId, file, token);
             return ResponseFactory.ok(ExceptionMessage.RESUME_UPLOADED_SUCCESSFULLY);
         } catch (ValidationException e) {
             return ResponseFactory.badRequest(e.getMessage());

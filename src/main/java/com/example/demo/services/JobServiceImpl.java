@@ -40,6 +40,7 @@ public class JobServiceImpl implements JobService {
         jobValidation.validateJob(jobDto);
         Job job = this.jobMapper.toModel(jobDto);
         Job savedJob = this.jobRepository.save(job);
+
         return this.jobMapper.toDto(savedJob);
     }
 
@@ -55,7 +56,7 @@ public class JobServiceImpl implements JobService {
         return (List<JobsForEachCompanyDto>) this.jobsForEachCompanyMapper.toDto(jobsByCompanyId);
     }
 
-    @Scheduled(cron = Constants.EVERY_DAY)
+    @Scheduled(cron = Constants.EVERY_NIGHT)
     public void deleteAfterTenDays() {
         LocalDate tenDaysAgo = LocalDate.now().minusDays(10);
         this.jobRepository.deleteAfterDays(tenDaysAgo);

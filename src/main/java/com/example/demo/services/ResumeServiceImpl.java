@@ -36,7 +36,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume store(long jobId, MultipartFile file, String token) throws IOException, ValidationException {
+    public Resume save(long jobId, MultipartFile file, String token) throws IOException, ValidationException {
         String fileName = String.valueOf(System.currentTimeMillis() + RANDOM.nextLong()).concat(".pdf");
 
         JobDto job = new JobDto();

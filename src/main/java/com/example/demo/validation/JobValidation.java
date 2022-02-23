@@ -45,7 +45,7 @@ public class JobValidation {
 
     private void validateActiveJobsAreLessThanFive(JobDto jobDto) throws ValidationException {
         int countOfActiveJobForCompany = this.jobRepository.findCountOfActiveJobForCompany(jobDto.getCompany().getId());
-        if (countOfActiveJobForCompany > Constants.ALLOWABLE_NUMBER_FOR_JOBS_ARE_5_EACH_COUNTER)
+        if (countOfActiveJobForCompany > Constants.ALLOWABLE_NUMBER_FOR_JOBS_ARE_5_EACH_COMPANY)
             throw new ValidationException(ExceptionMessage.MORE_THAN_TEN_JOB_HAS_BEEN_SAVED_FOR_THIS_COMPANY);
     }
 }
