@@ -1,8 +1,8 @@
 package com.example.demo.services;
 
-import com.example.demo.configuration.JwtUtils;
 import com.example.demo.dto.JwtResponseDto;
 import com.example.demo.dto.LoginRequestDto;
+import com.example.demo.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -40,7 +39,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .toList();
 
         return new JwtResponseDto(
                 jwt,
