@@ -5,13 +5,16 @@ import com.example.demo.model.Resume;
 import com.example.demo.services.ResumeService;
 import com.example.demo.util.ResponseFactory;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +36,7 @@ public class ResumeController {
     }
 
     @PreAuthorize("hasRole('USER')")
-    @PostMapping("/job/{jobId}")
+    @PostMapping(value = "/job/{jobId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Users can upload their resume and it needs user authorization",
             tags = "Resume",
             security = @SecurityRequirement(name = "Authorization"),
@@ -44,7 +47,10 @@ public class ResumeController {
     public ResponseEntity<?> uploadFile(
             @PathVariable long jobId,
             @RequestHeader("Authorization") String token,
-            @RequestParam("file") MultipartFile file) {
+            @Parameter(
+                    description = "File to be uploaded",
+                    content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)
+            ) @RequestParam("file") MultipartFile file) {
         try {
             storageService.save(jobId, file, token);
             return ResponseFactory.ok(ExceptionMessage.RESUME_UPLOADED_SUCCESSFULLY);
@@ -55,7 +61,7 @@ public class ResumeController {
         }
     }
 
-    @GetMapping("/files/job/{job-id}/user-id/{user-id}")
+    @GetMapping(value = "/files/job/{job-id}/user-id/{user-id}")
     @PreAuthorize("hasRole('COMPANY')")
     @Operation(summary = "Companies can download  resume and it needs company authorization",
             tags = "Resume",

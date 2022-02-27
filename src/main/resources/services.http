@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "ازینب",
+  "companyName": "ازینبم",
   "city": 27,
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "zshajarkar22@yahoo.com",
+  "email": "zshajarkar221@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwNzM2MCwiZXhwIjoxNjQ1NjkzNzYwfQ.xd75QiLeHwdKlBWNsnVGVOHWEG-38FbJ2s5dfKRa3hCUiszdqG6uOgPHLES_ax2AYmvbsimFz80VcV2zZ8Lqaw
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMjIxQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ1OTYyMTUwLCJleHAiOjE2NDYwNDg1NTB9.kbFbNIlzwgDxueOBiPiCwFBD-TcyZ3cJ7WVjj2WeSrCiZey6fw7_MLRjPA8juVSjjHIntmq18Fu-ULyp4K1F2Q
 Content-Type: application/json
 
 {
@@ -49,7 +49,7 @@ POST http://localhost:8084/public/user/v1/process_register
 Content-Type: application/json
 
 {
-  "email": "abdolVahab@yahoo.com",
+  "email": "abdolVahab2@yahoo.com",
   "password": "sSSssd78@5*",
   "firstName": "عبدال وهاب",
   "lastName": "شجرکار       ",
@@ -64,11 +64,11 @@ GET http://localhost:8084/public/job/v1?jobTitle=بنا
 # curl --location --request POST 'http://localhost:8084/upload/job/1/user/1'
 #--form 'file=@"/H:/why.png"'
 POST http://localhost:8084/public/resume/v1/job/7
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmRvbFZhaGFiQHlhaG9vLmNvbSIsImlhdCI6MTY0NTYwNzQ5MSwiZXhwIjoxNjQ1NjkzODkxfQ.pWNwLaJLBqXqv68hK_3jvm1LXtVW2oxOCeYzx--84DJ3CmTM5dKyTaA5MigTlUR-LCSNw_H_tdJAb5eupDaL5Q
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmRvbFZhaGFiQHlhaG9vLmNvbSIsImlhdCI6MTY0NTk2MDM2OSwiZXhwIjoxNjQ2MDQ2NzY5fQ.1mGk78mkH_3zDW-e8usX7kYAjUTxzOF81C9gjaX-lqeYR1F_moFDp1JVzMUTqXOTGvG_i83XAdstMTJSximsHg
 Content-Type: multipart/form-data; boundary=requestBody
 
 --requestBody
-Content-Disposition: form-data; name="file"; filename="قثسعئث.pdf""< "\D:\data\قثسعئث.pdf"
+Content-Disposition: form-data; name="file"; filename="قثسعئث.pdf""< "\D:\data\6088529910928644849.pdf"
 
 --requestBody--
 
@@ -98,15 +98,15 @@ GET http://localhost:8084/public/skill/v1
 ### گرفتن لیست مهارت های ثبت شده
 
 GET http://localhost:8084/public/job/v1/companyId
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMjIxQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ1OTYyMTUwLCJleHAiOjE2NDYwNDg1NTB9.kbFbNIlzwgDxueOBiPiCwFBD-TcyZ3cJ7WVjj2WeSrCiZey6fw7_MLRjPA8juVSjjHIntmq18Fu-ULyp4K1F2Q
 
 ### گرفتن لیست شغل ثبت شده هر کمپانی
 
 GET http://localhost:8084/public/user/v1/jobId/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMjIxQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ1OTYyMTUwLCJleHAiOjE2NDYwNDg1NTB9.kbFbNIlzwgDxueOBiPiCwFBD-TcyZ3cJ7WVjj2WeSrCiZey6fw7_MLRjPA8juVSjjHIntmq18Fu-ULyp4K1F2Q
 ### گرفتن لیست کاربرانی که برای ایند شغل رزومه ارسال کرده اند
 
-GET http://localhost:8084/public/resume/v1/files/job/2/user-id/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTYwODQxNCwiZXhwIjoxNjQ1Njk0ODE0fQ.h7F6xVHT4nz2VuftdhqVls4bn2rUEvtRTohNdEnWY9LyM76wOwd_mxUT9obmgKMmjaawUX8MZleGz7kwmwsrwA
+GET http://localhost:8084/public/resume/v1/files/job/2/user-id/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMkB5YWhvby5jb21AY29tcGFueSIsImlhdCI6MTY0NTk2MjUwNiwiZXhwIjoxNjQ2MDQ4OTA2fQ.bUe1UReM4R5Cm5B3P8OMG1G7HcWApz6lrOlI9swEC3PKG-vz_v41xIOWsMB5qwNj9-9ms0oJmXTc5BZqQjB_Wg
 
 ### دانلود رزومه
