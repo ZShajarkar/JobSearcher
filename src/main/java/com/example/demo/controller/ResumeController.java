@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.bind.ValidationException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @CrossOrigin
 @RestController
@@ -67,12 +69,19 @@ public class ResumeController {
             tags = "Resume",
             security = @SecurityRequirement(name = "Authorization"),
             responses = @ApiResponse(responseCode = "200"))
-    public ResponseEntity<byte[]> getFile(@PathVariable("job-id") Long jobId, @PathVariable("user-id") Long userId) {
+    public ResponseEntity<?> getFile(@PathVariable("job-id") Long jobId, @PathVariable("user-id") Long userId) {
         Resume fileDB = storageService.findByJobIdAndUserId(jobId, userId);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
-                .body(fileDB.getData());
+
+        try {
+            Path path = Paths.get("/files" + fileDB.getName());
+            Files.write(path, fileDB.getData());
+            return ResponseEntity.ok().body(path);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
-
-
 }
