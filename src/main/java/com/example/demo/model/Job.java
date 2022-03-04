@@ -27,7 +27,7 @@ public class Job {
     @Column(nullable = true)
     @Min(value = 0, message = "حقوق می بایست عدد مثبت باشد")
     private BigInteger Salary;
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false,length = 10000)
     private String jobDescription;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "job_skills",
