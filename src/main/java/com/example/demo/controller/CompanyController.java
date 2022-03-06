@@ -29,7 +29,7 @@ public class CompanyController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @Operation(summary = "it saves the company",
-            tags = "company",
+            tags = "Register",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = SignUpCompanyResponseDto.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})
@@ -43,7 +43,7 @@ public class CompanyController {
 
     @PostMapping(path = "sign-in", consumes = "application/json", produces = "application/json")
     @Operation(summary = "company can log in ",
-            tags = "company",
+            tags = "Log in",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = JwtResponseDto.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})

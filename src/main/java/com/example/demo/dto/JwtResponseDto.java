@@ -14,11 +14,13 @@ public class JwtResponseDto {
     private Long id;
     private String email;
     private List<String> roles;
+    private String name;
 
-    public JwtResponseDto(String token, Long id, String email, List<String> roles) {
+    public JwtResponseDto(String token, Long id, String email, List<String> roles,String name) {
         this.token = token;
         this.id = id;
         this.email = email;
         this.roles = roles;
+        this.name=name;
     }
 }

@@ -11,7 +11,7 @@ public class SignUpCompanyRequestMapper implements DtoToModelMapper<SignUpCompan
             return null;
         }
         Company company = new Company();
-        company.setEmail(dto.getEmail());
+        company.setUserName(dto.getEmail());
         company.setPassword(dto.getPassword());
         company.setCity(dto.getCity());
         company.setAboutCompany(dto.getAboutCompany());

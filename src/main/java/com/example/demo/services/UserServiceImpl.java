@@ -55,8 +55,22 @@ public class UserServiceImpl implements UserService {
         return signUpUserResponseMapper.toDto(savedUser);
     }
 
+    @Override
+    public SignUpUserResponseDto saveAdmin(SignUpUserRequestDto userDto) throws Exception {
+        userValidation.validateUser(userDto);
+        userDto.setPassword(encoder.encode(userDto.getPassword()));
+        User user = dtoToModelMapper.toModel(userDto);
+        Set<Role> roles = new HashSet<>();
+        Role userRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                .orElseThrow(() -> new RuntimeException(ExceptionMessage.ROLE_IS_NOT_FOUND));
+        roles.add(userRole);
+        user.setRoles(roles);
+        User savedUser = userRepository.save(user);
+        return signUpUserResponseMapper.toDto(savedUser);
+    }
+
     public List<MainUserInfoDto> getUsersSentResume(Long jobId, String token) throws Exception {
-        userValidation.validateCompanyAccess(token,jobId);
+        userValidation.validateCompanyAccess(token, jobId);
         List<User> usersWhoSentResume = userRepository.findByJobId(jobId);
         return (List<MainUserInfoDto>) mainUserInfoMapper.toDto(usersWhoSentResume);
     }

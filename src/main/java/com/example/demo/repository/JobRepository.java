@@ -45,4 +45,16 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     );
 
 
+    @Query(
+            "select job from Job job  where job.jobStatus=:jobStatus")
+    List<Job> findByJobStatus(@Param("jobStatus") int jobStatus
+    );
+
+    @Modifying
+    @Transactional
+    @Query(
+            "UPDATE Job job set job.jobStatus=:status where job.id in :jobIds")
+    void updateJobByJobStatus(@Param("status") int status, @Param("jobIds") List<Long> jobIds);
+
+
 }

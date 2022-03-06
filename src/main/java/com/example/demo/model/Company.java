@@ -27,16 +27,16 @@ public class Company {
     @Min(1)
     @Max(29)
     private int city;
-    @Column(nullable = false, length = 120)
+    @Column(nullable = false, length = 1000)
     private String aboutCompany;
-    @Column(nullable = false, length = 80)
+    @Column(nullable = false, length = 256)
     private String address;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Job> jobs = new HashSet<>();
     @Column(nullable = false, unique = true, length = 45)
     @NotBlank
-    private String email;
+    private String userName;
     @Column(nullable = false)
     @NotBlank
     @Size(max = 120)

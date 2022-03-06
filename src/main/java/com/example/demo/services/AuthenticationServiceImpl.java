@@ -45,7 +45,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 jwt,
                 userDetails.getId(),
                 userDetails.getEmail(),
-                roles);
+                roles,
+                userDetails.getName());
     }
 
     public Long getIdOutOfBearerToken(String accessToken) {

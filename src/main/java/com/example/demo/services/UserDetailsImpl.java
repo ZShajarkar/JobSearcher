@@ -7,26 +7,29 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
+    @Serial
     private static final long serialVersionUID = 1L;
     private Long id;
     private String username;
     private String email;
     @JsonIgnore
     private String password;
+    private String name;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, String email, String password,
+    public UserDetailsImpl(Long id, String username, String name, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
-        this.email = email;
+        this.name = name;
         this.password = password;
         this.authorities = authorities;
     }
@@ -39,7 +42,7 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(
                 user.getId(),
                 user.getEmail(),
-                user.getEmail(),
+                user.getFirstName(),
                 user.getPassword(),
                 authorities);
     }
@@ -51,8 +54,8 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 company.getId(),
-                company.getEmail(),
-                company.getEmail(),
+                company.getUserName(),
+                company.getCompanyName(),
                 company.getPassword(),
                 authorities);
     }
@@ -108,5 +111,9 @@ public class UserDetailsImpl implements UserDetails {
             return false;
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
+    }
+
+    public String getName() {
+        return name;
     }
 }

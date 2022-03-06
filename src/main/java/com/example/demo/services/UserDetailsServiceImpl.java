@@ -25,19 +25,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetails userDetails;
         if (username.endsWith("@company"))
             userDetails = loadUserByUserNameOfCompany(username);
-        else userDetails = loadUserByUserNameOfUser(username);
+        else userDetails = loadUserByEmailOfUser(username);
         return userDetails;
     }
 
-    public UserDetails loadUserByUserNameOfUser(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByEmailOfUser(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
         if (user == null)
-            throw new UsernameNotFoundException("User Not Found with username: " + username);
+            throw new UsernameNotFoundException("User Not Found with email: " + username);
         return UserDetailsImpl.build(user);
     }
 
     public UserDetails loadUserByUserNameOfCompany(String username) throws UsernameNotFoundException {
-        Company user = companyRepository.findByEmail(username);
+        Company user = companyRepository.findByUserName(username);
         if (user == null)
             throw new UsernameNotFoundException("Company Not Found with username: " + username);
         return UserDetailsImpl.build(user);

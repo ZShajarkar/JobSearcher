@@ -36,7 +36,7 @@ public class UserController {
 
     @PostMapping(path = "/process_register", consumes = "application/json", produces = "application/json")
     @Operation(summary = "it saves the user",
-            tags = "user",
+            tags = "Register",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = SignUpUserResponseDto.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})
@@ -48,9 +48,23 @@ public class UserController {
         }
     }
 
+    @PostMapping(path = "/process_register/admin", consumes = "application/json", produces = "application/json")
+    @Operation(summary = "it saves the admin",
+            tags = "Register",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = SignUpUserResponseDto.class))),
+                    @ApiResponse(responseCode = "400", description = "Bad request")})
+    public ResponseEntity<?> saveAdmin(@Valid @RequestBody SignUpUserRequestDto userDto) {
+        try {
+            return ResponseFactory.ok(userService.saveAdmin(userDto));
+        } catch (Exception e) {
+            return ResponseFactory.badRequest(e.getMessage());
+        }
+    }
+
     @PostMapping(path = "/sign_in", consumes = "application/json", produces = "application/json")
-    @Operation(summary = "user can log in",
-            tags = "user",
+    @Operation(summary = "user and admin can log in",
+            tags = "Log in",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = SignUpUserResponseDto.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})

@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -40,7 +41,6 @@ public class JobServiceImpl implements JobService {
         jobValidation.validateJob(jobDto);
         Job job = this.jobMapper.toModel(jobDto);
         Job savedJob = this.jobRepository.save(job);
-
         return this.jobMapper.toDto(savedJob);
     }
 
@@ -53,7 +53,8 @@ public class JobServiceImpl implements JobService {
     public List<JobsForEachCompanyDto> findJobsByCompanyId(String token) {
         Long companyId = authenticationService.getIdOutOfBearerToken(token);
         List<Job> jobsByCompanyId = this.jobRepository.findByCompanyId(companyId);
-        return (List<JobsForEachCompanyDto>) this.jobsForEachCompanyMapper.toDto(jobsByCompanyId);
+        Collection<JobsForEachCompanyDto> jobsForEachCompanyDtos = this.jobsForEachCompanyMapper.toDto(jobsByCompanyId);
+        return jobsForEachCompanyDtos.stream().toList();
     }
 
     @Scheduled(cron = Constants.EVERY_NIGHT)
@@ -61,4 +62,6 @@ public class JobServiceImpl implements JobService {
         LocalDate tenDaysAgo = LocalDate.now().minusDays(10);
         this.jobRepository.deleteAfterDays(tenDaysAgo);
     }
+
+
 }

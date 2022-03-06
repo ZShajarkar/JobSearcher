@@ -27,7 +27,7 @@ public class CompanyResponseMapper implements DtoToModelAndModelToDtoMapper<Sign
         SignUpCompanyResponseDto companyDto = new SignUpCompanyResponseDto();
         companyDto.setCompanyName(userModel.getCompanyName());
         companyDto.setCity(provinceService.getNameOfProvince(userModel.getCity()));
-        companyDto.setEmail(userModel.getEmail());
+        companyDto.setEmail(userModel.getUserName());
         companyDto.setId(userModel.getId());
         companyDto.setRoles(userModel.getRoles());
         companyDto.setAddress(userModel.getAddress());

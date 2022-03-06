@@ -48,7 +48,12 @@ public class CompanyValidation {
     }
 
     private void validateUniqueEmail(String email) throws ValidationException {
-        if (companyRepository.findByEmail(email.concat("@company")) != null)
+        String userName = buildUserName(email);
+        if (companyRepository.findByUserName(userName)!= null)
             throw new ValidationException(ExceptionMessage.EMAIL_HAS_BEEN_REGISTERED);
+    }
+
+    private String buildUserName(String email) {
+        return email.concat("@company");
     }
 }

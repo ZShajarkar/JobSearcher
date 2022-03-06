@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class Job {
     @Column(nullable = true)
     @Min(value = 0, message = "حقوق می بایست عدد مثبت باشد")
     private BigInteger Salary;
-    @Column(nullable = false,length = 10000)
+    @Column(nullable = false, length = 10000)
     private String jobDescription;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "job_skills",
@@ -42,8 +43,13 @@ public class Job {
     @JoinColumn(nullable = false)
     private Company company;
     @CreationTimestamp
-    private LocalDate registeredDate=LocalDate.now();
+    private LocalDate registeredDate = LocalDate.now();
     @Column(columnDefinition = "boolean default false", nullable = false)
     private boolean deleted;
+    @Min(1)
+    @Max(3)
+    @Column(nullable = false, columnDefinition = "integer default 1")
+    private int jobStatus = 1;
+
 
 }
