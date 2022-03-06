@@ -32,7 +32,7 @@ public class JobController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @PreAuthorize("hasRole('COMPANY')")
     @Operation(summary = "Company can define an job using token",
-            tags = "job",
+            tags = "Company Operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = JobDto.class))),
@@ -48,7 +48,7 @@ public class JobController {
 
     @GetMapping(produces = "application/json")
     @Operation(summary = "Jobs are searched by this method",
-            tags = "job",
+            tags = "Common operations ",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = JobStos.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})
@@ -63,7 +63,7 @@ public class JobController {
     @GetMapping(path = "/companyId", produces = "application/json")
     @PreAuthorize("hasRole('COMPANY')")
     @Operation(summary = "get jobs of a company using token",
-            tags = "job",
+            tags = "Company Operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = JobsForEachCompanyDtos.class))),

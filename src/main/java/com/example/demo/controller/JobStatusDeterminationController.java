@@ -34,7 +34,7 @@ public class JobStatusDeterminationController {
     @GetMapping(produces = "application/json")
     @Operation(summary = "Admin can see undefined job status",
             security = @SecurityRequirement(name = "Authorization"),
-            tags = "admin jobs",
+            tags = "Admin operation",
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = JobStos.class))),
                     @ApiResponse(responseCode = "400", description = "Bad request")})
@@ -51,7 +51,7 @@ public class JobStatusDeterminationController {
     @PutMapping(path = "approval")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Admin can see approve jobs ",
-            tags = "admin jobs",
+            tags = "Admin operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "204", description = "موفقیت آمیز بود"),
@@ -69,7 +69,7 @@ public class JobStatusDeterminationController {
     @PutMapping(path = "rejection")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Admin can  reject jobs ",
-            tags = "admin jobs",
+            tags = "Admin operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "204", description = "موفقیت آمیز بود"),

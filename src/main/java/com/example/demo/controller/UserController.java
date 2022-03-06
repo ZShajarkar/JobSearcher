@@ -79,7 +79,7 @@ public class UserController {
     @GetMapping(path = "/jobId/{job-id}", produces = "application/json")
     @PreAuthorize("hasRole('COMPANY')")
     @Operation(summary = "Company can see who has been sent resume for a job",
-            tags = "company",
+            tags = "Company Operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ListMainUserInfoDto.class))),

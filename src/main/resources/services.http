@@ -10,11 +10,11 @@ POST http://localhost:8084/public/company/v1
 Content-Type: application/json
 
 {
-  "companyName": "ازینبم",
+  "companyName": "تازینب",
   "city": 27,
   "aboutCompany": "شرکتی بزرگ و با تعداد 200 کارمند",
   "address": " خیابان انقلاب،پلاک 200",
-  "email": "zshajarkar221@yahoo.com",
+  "email": "zshajarkar@yahoo.com",
   "password": "sSSssd78@5*",
   "confirmPassword": "sSSssd78@5*"
 }
@@ -23,22 +23,18 @@ Content-Type: application/json
 
 
 POST http://localhost:8084/public/job/v1
-Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyMjIxQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ1OTYyMTUwLCJleHAiOjE2NDYwNDg1NTB9.kbFbNIlzwgDxueOBiPiCwFBD-TcyZ3cJ7WVjj2WeSrCiZey6fw7_MLRjPA8juVSjjHIntmq18Fu-ULyp4K1F2Q
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6c2hhamFya2FyQHlhaG9vLmNvbUBjb21wYW55IiwiaWF0IjoxNjQ2NTY4NTA4LCJleHAiOjE2NDY2NTQ5MDh9.vHGkRKsf4--flkWpcmjGQjCGaar9L0QQVqQLty9W2XYJJU-aIpKUA6PDhtgiPnGtQyzLFnV301pVotgCVZZg2w
 Content-Type: application/json
 
 {
-  "jobTitle": "ییبنا",
+  "jobTitle": "ااشغلی",
   "jobGroup": "طراحی",
   "salary": 13,
   "jobDescription": "با محیطی مفرح",
   "skills": [
     {
       "id": null,
-      "name": "جاوا"
-    },
-    {
-      "id": null,
-      "name": "hi"
+      "name": "ایلاستریتور"
     }
   ]
 }
@@ -88,7 +84,7 @@ POST http://localhost:8084/public/company/v1/sign-in
 Content-Type: application/json
 
 {
-  "email": "zshajarkar2@yahoo.com",
+  "email": "zshajarkar221@yahoo.com",
   "password": "sSSssd78@5*"
 }
 

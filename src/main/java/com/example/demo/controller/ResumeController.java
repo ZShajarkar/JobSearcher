@@ -40,7 +40,7 @@ public class ResumeController {
     @PreAuthorize("hasRole('USER')")
     @PostMapping(value = "/job/{jobId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Users can upload their resume and it needs user authorization",
-            tags = "Resume",
+            tags = "User operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = {
                     @ApiResponse(responseCode = "200", description = "رزومه با موفقیت ارسال شد"),
@@ -66,7 +66,7 @@ public class ResumeController {
     @GetMapping(value = "/files/job/{job-id}/user-id/{user-id}")
     @PreAuthorize("hasRole('COMPANY')")
     @Operation(summary = "Companies can download  resume and it needs company authorization",
-            tags = "Resume",
+            tags = "Company Operation",
             security = @SecurityRequirement(name = "Authorization"),
             responses = @ApiResponse(responseCode = "200"))
     public ResponseEntity<?> getFile(@PathVariable("job-id") Long jobId, @PathVariable("user-id") Long userId) {
