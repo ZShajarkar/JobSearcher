@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class JobStatusDeterminationServiceImpl implements JobStatusDeterminationService {
     private final JobRepository jobRepository;
@@ -28,6 +29,6 @@ public class JobStatusDeterminationServiceImpl implements JobStatusDetermination
 
     @Override
     public void rejectJobs(List<Long> undefinedStatusJobs) {
-        jobRepository.updateJobByJobStatus(JobStatus.APPROVED.id(), undefinedStatusJobs);
+        jobRepository.updateJobByJobStatus(JobStatus.REJECTED.id(), undefinedStatusJobs);
     }
 }

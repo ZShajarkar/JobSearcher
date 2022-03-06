@@ -37,6 +37,7 @@ public class JobServiceImpl implements JobService {
     }
 
     public JobDto save(JobDto jobDto, String token) throws Exception {
+        jobDto.getSkills().stream().filter(item -> item.getId() != null && item.getId() == 0).forEach(item -> item.setId(null));
         jobDto.setCompany(new CompanyDto(authenticationService.getIdOutOfBearerToken(token)));
         jobValidation.validateJob(jobDto);
         Job job = this.jobMapper.toModel(jobDto);
@@ -60,7 +61,7 @@ public class JobServiceImpl implements JobService {
     @Scheduled(cron = Constants.EVERY_NIGHT)
     public void deleteAfterTenDays() {
         LocalDate tenDaysAgo = LocalDate.now().minusDays(10);
-        this.jobRepository.deleteAfterDays(tenDaysAgo);
+        this.jobRepository.deleteAfterEqualDays(tenDaysAgo);
     }
 
 

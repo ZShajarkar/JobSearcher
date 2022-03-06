@@ -5,6 +5,7 @@ import com.example.demo.model.Company;
 
 @Mapper
 public class CompanyMapper implements DtoToModelAndModelToDtoMapper<CompanyDto, Company> {
+
     @Override
     public Company toModel(CompanyDto dto) {
         if (dto == null) {
@@ -14,8 +15,6 @@ public class CompanyMapper implements DtoToModelAndModelToDtoMapper<CompanyDto, 
         company.setAboutCompany(dto.getAboutCompany());
         company.setCompanyName(dto.getCompanyName());
         company.setAddress(dto.getAddress());
-        company.setCity(dto.getCity());
-        company.setJobs(dto.getJobs());
         company.setId(dto.getId());
         return company;
     }
@@ -30,7 +29,6 @@ public class CompanyMapper implements DtoToModelAndModelToDtoMapper<CompanyDto, 
         companyDto.setCompanyName(vm.getCompanyName());
         companyDto.setAddress(vm.getAddress());
         companyDto.setCity(vm.getCity());
-        companyDto.setJobs(vm.getJobs());
         companyDto.setId(vm.getId());
         return companyDto;
     }

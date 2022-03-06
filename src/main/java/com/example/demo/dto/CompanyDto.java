@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Job;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,7 @@ public class CompanyDto {
     private int city;
     private String aboutCompany;
     private String address;
-    private Set<Job> jobs = new HashSet<>();
+    private Set<JobDto> jobs = new HashSet<>();
 
     public CompanyDto(Long id) {
         this.id = id;

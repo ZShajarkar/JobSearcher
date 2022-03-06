@@ -31,6 +31,7 @@ public class CompanyResponseMapper implements DtoToModelAndModelToDtoMapper<Sign
         companyDto.setId(userModel.getId());
         companyDto.setRoles(userModel.getRoles());
         companyDto.setAddress(userModel.getAddress());
+        companyDto.setAboutCompany(userModel.getAboutCompany());
         return companyDto;
     }
 }

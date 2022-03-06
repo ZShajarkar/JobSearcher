@@ -15,21 +15,21 @@ import java.util.List;
 public interface JobRepository extends JpaRepository<Job, Long> {
     @Query(
             "select job from Job job inner join Company company on job.company.id=company.id " +
-                    "where (:jobTitle is null or job.JobTitle like %:jobTitle% ) and(:city is null or company.city=:city)  ")
+                    "where (:jobTitle is null or job.JobTitle like %:jobTitle% ) and(:city is null or company.city=:city) and job.jobStatus=3")
     List<Job> findByJobTitleAndCity(
             @Param("jobTitle") String jobTitle,
             @Param("city") Integer city
     );
 
     @Query(
-            "select job from Job job where job.JobTitle=:jobTitle and job.company.id=:companyId and job.deleted=false ")
+            "select job from Job job where job.JobTitle=:jobTitle and job.company.id=:companyId and job.deleted=false and job.jobStatus=3")
     List<Job> findByCompanyAndJobId(@Param("jobTitle") String jobTitle,
                                     @Param("companyId") Long companyId
 
     );
 
     @Query(
-            "select count(job) from Job job where job.company.id=:companyId and job.deleted=false ")
+            "select count(job) from Job job where job.company.id=:companyId and job.deleted=false and job.jobStatus=1")
     int findCountOfActiveJobForCompany(@Param("companyId") Long companyId);
 
 
@@ -40,8 +40,8 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Transactional
     @Modifying
     @Query(
-            "UPDATE Job job set job.deleted=true where job.registeredDate=:date")
-    void deleteAfterDays(@Param("date") LocalDate days
+            "UPDATE Job job set job.deleted=true where job.registeredDate<=:date and job.jobStatus=3")
+    void deleteAfterEqualDays(@Param("date") LocalDate days
     );
 
 
@@ -53,7 +53,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @Modifying
     @Transactional
     @Query(
-            "UPDATE Job job set job.jobStatus=:status where job.id in :jobIds")
+            "UPDATE Job job set job.jobStatus=:status,job.registeredDate=current_date where job.id in :jobIds ")
     void updateJobByJobStatus(@Param("status") int status, @Param("jobIds") List<Long> jobIds);
 
 

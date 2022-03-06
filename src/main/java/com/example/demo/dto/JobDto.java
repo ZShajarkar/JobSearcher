@@ -18,7 +18,6 @@ public class JobDto {
     private String jobDescription;
     private Set<SkillDto> skills = new HashSet<>();
     private CompanyDto company;
-    private Set<ResumeDto> resumes = new HashSet<>();
     private LocalDate registeredDate;
     private boolean deleted;
 }
